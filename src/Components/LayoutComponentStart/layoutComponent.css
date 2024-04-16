@@ -1,0 +1,21 @@
+.container-form{
+    width: 100%;
+    background-color: rgba(119, 136, 153, 0.733);
+}
+
+.wrap-form{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    width: 60%;
+    background-color: rgb(91, 84, 84);
+    margin: auto;
+    padding: 35px 20px;
+    border-radius: 15px;
+}
