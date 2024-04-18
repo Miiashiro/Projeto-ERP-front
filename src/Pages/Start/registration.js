@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import LayoutComponent from "../../Components/LayoutComponentStart/layoutComponent"
 
 function Registration(){
@@ -39,7 +40,7 @@ function Registration(){
                 </div>
             </form>
 
-            <p>Voltar</p>
+            <p><Link to="/">Voltar</Link></p>
         </LayoutComponent>
     )
 }

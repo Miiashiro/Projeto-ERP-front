@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import LayoutComponent from "../../Components/LayoutComponentStart/layoutComponent"
 import "./start.css"
 
@@ -34,7 +35,7 @@ function Login() {
 
             <p>Esqueceu a senha? Clique aqui</p>
 
-            <p>Não tem uma conta? Clique aqui</p>
+            <p>Não tem uma conta? <Link to="/Cadastro">Clique aqui</Link></p>
 
         </LayoutComponent>
     )
