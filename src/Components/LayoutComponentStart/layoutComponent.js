@@ -6,6 +6,8 @@ const LayoutComponent = (props) => {
     <div className="container-form">
       <div className="wrap-form">
         <div className="form">
+          <span className="title-start">{props.title}</span>
+
           {props.children}
         </div>
       </div>
