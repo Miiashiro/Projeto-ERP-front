@@ -6,11 +6,12 @@ import "./start.css"
 function Login() {
 
     const [email, setEmail] = useState("")
-    const [senha, setSenha] = useState("")
+    const [password, setPassword] = useState("")
 
     return (
         <LayoutComponent title="Login">
             <form>
+                {/*Email*/}
                 <div className="wrap-input">
                     <input className={email !== "" ? 'has-val input-start' : 'input-start'}
                         type="email"
@@ -19,14 +20,16 @@ function Login() {
                     <span className="focus-input" data-placeholder="Email"></span>
                 </div>
 
+                {/*Senha*/}
                 <div className="wrap-input">
-                    <input className={senha !== "" ? 'has-val input-start' : 'input-start'}
+                    <input className={password !== "" ? 'has-val input-start' : 'input-start'}
                         type="password"
-                        value={senha}
-                        onChange={(e) => setSenha(e.target.value)} />
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)} />
                     <span className="focus-input" data-placeholder="Senha"></span>
                 </div>
 
+                {/*Botao para entrar no sistema */}
                 <div className="container-button">
                     <button>Entrar</button>
                 </div>

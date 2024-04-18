@@ -4,21 +4,23 @@ import LayoutComponent from "../../Components/LayoutComponentStart/layoutCompone
 
 function Registration(){
 
-    const [nome, setNome] = useState("")
+    const [name, setName] = useState("")
     const [email, setEmail] = useState("")
-    const [senha, setSenha] = useState("")
+    const [password, setPassword] = useState("")
 
     return(
         <LayoutComponent title="Cadastro">
             <form>
+                {/*Nome */}
                 <div className="wrap-input">
-                    <input className={nome !== "" ? 'has-val input-start' : 'input-start'}
+                    <input className={name !== "" ? 'has-val input-start' : 'input-start'}
                            type="text"
-                           value={nome}
-                           onChange={(e) => setNome(e.target.value)}/>
+                           value={name}
+                           onChange={(e) => setName(e.target.value)}/>
                     <span className="focus-input" data-placeholder="Nome"></span>
                 </div>
 
+                {/*Email */}
                 <div className="wrap-input">
                     <input className={email !== "" ? 'has-val input-start' : 'input-start'}
                            type="email"
@@ -27,14 +29,16 @@ function Registration(){
                     <span className="focus-input" data-placeholder="Email"></span>
                 </div>
 
+                {/*Senha */}
                 <div className="wrap-input">
-                    <input className={senha !== "" ? 'has-val input-start' : 'input-start'}
+                    <input className={password !== "" ? 'has-val input-start' : 'input-start'}
                            type="password"
-                           value={senha}
-                           onChange={(e) => setSenha(e.target.value)}/>
+                           value={password}
+                           onChange={(e) => setPassword(e.target.value)}/>
                     <span className="focus-input" data-placeholder="Senha"></span>
                 </div>
 
+                {/*Botao para cadastrar */}
                 <div className="container-button">
                     <button>Cadastrar</button>
                 </div>
