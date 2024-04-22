@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import api from "../../api"
 import LayoutComponent from "../../Components/LayoutComponentStart/layoutComponent"
 
 function Registration(){
@@ -7,6 +8,24 @@ function Registration(){
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    async function createUser(e){
+        e.preventDefault()
+
+        try{
+            const data = { name, email, password }
+
+            await api.post('/cadastro', data)
+
+            alert("Cadastro realizado")
+
+            setName("")
+            setEmail("")
+            setPassword("")
+        }catch(error){
+            alert(`Erro no cadastro. Veja as credenciais. Código erro: ${error}`)
+        }
+    }
 
     return(
         <LayoutComponent title="Cadastro">
@@ -40,7 +59,7 @@ function Registration(){
 
                 {/*Botao para cadastrar */}
                 <div className="container-button">
-                    <button>Cadastrar</button>
+                    <button onClick={createUser}>Cadastrar</button>
                 </div>
             </form>
 

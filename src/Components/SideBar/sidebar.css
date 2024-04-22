@@ -2,6 +2,7 @@
     position: absolute;
 }
 
+/*tamanho do sidebar*/
 .sidebar{
     padding-top: 10px;
     background-color: rgb(139, 137, 137);
@@ -9,10 +10,12 @@
     width: 50px;
 }
 
+/*Se o sidebar estiver aberto*/
 .has-val{
     width: 120px;
 }
 
+/*Caixa de texto*/
 .sidebar .menu-faketrigger{
     position: absolute;
     z-index: 2;
@@ -22,6 +25,7 @@
     margin-left: 9px;
 }
 
+/*posição da caixa de texto e do cancelar*/
 .sidebar .menu-lines{
     position: absolute;
     z-index: 1;
@@ -79,6 +83,7 @@
     font-style: none;
 }
 
+/*Faz o texto esconder quando o sidebar estiver ativado*/
 .has-low{
     display: none;
 }
@@ -87,8 +92,4 @@
 .icon{
     padding-left: 7px;
     padding-right: 4px;
-}
-
-.main{
-    padding-left: calc(50px);
 }
