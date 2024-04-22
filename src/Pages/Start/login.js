@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import api from "../../api"
 import LayoutComponent from "../../Components/LayoutComponentStart/layoutComponent"
 import "./start.css"
 
@@ -7,7 +8,22 @@ function Login() {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    let navigate = useNavigate()
 
+    async function handleLogin(e){
+        e.preventDefault()
+
+        try{
+            const data = {email, password}
+
+            api.post('/user', data)
+
+            alert("Login afetuado com sucesso")
+            navigate("/Home")
+        }catch(error){
+            alert(`algo deu errado. Erro: ${error}, revize os campos.`)
+        }
+    }
     return (
         <LayoutComponent title="Login">
             <form>
@@ -31,7 +47,7 @@ function Login() {
 
                 {/*Botao para entrar no sistema */}
                 <div className="container-button">
-                    <button>Entrar</button>
+                    <button onClick={handleLogin}>Entrar</button>
                 </div>
             </form>
 
