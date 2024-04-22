@@ -2,6 +2,7 @@ import React from "react";
 import "./product.css"
 import SideBar from "../../Components/SideBar/sidebar"
 import LayoutFilter from "../../Components/LayoutFilter/layoutFilter";
+import { FaSearch } from "react-icons/fa";
 
 function Product(){
     return(
@@ -15,6 +16,7 @@ function Product(){
                     <LayoutFilter>
                         <div className="wrap-search">
                             <input />
+                            <FaSearch className="icon" />
                         </div>
 
                         <button>Adicionar</button>
