@@ -1,0 +1,8 @@
+.resumeItem{
+    padding: 13px 5px;
+}
+
+.resumeItem div{
+    display: flex;
+    justify-content: space-between;
+}

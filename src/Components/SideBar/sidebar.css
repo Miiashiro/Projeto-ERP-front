@@ -12,7 +12,7 @@
 
 /*Se o sidebar estiver aberto*/
 .has-val{
-    width: 120px;
+    width: 130px;
 }
 
 /*Caixa de texto*/
@@ -91,5 +91,5 @@
 /*posição dos icones*/
 .icon{
     padding-left: 7px;
-    padding-right: 4px;
+    padding-right: 6px;
 }
