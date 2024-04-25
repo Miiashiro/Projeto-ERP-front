@@ -1,0 +1,32 @@
+/*fundo da tela*/
+.container-prod{
+    background-color: rgb(119, 136, 153);
+    width: 100%;
+    min-height: 100vh;
+}
+
+/*Conteudo*/
+.container-prod main{
+    padding-left: 50px;
+}
+
+/*Titulo*/
+.container-prod main span{
+    font-size: 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-left: 10px;
+    color: #FFC15A;
+}
+
+/*Posição da tabela e do filtro*/
+.content{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5em;
+}
+
+/*tamanho do quadro*/
+.wrap{
+    width: 95%;
+    background-color: rgb(228, 228, 228);
+}

@@ -1,7 +1,9 @@
+/**/
 .resumeItem{
     padding: 13px 5px;
 }
 
+/*Posição dos itens*/
 .resumeItem div{
     display: flex;
     justify-content: space-between;

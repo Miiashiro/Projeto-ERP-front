@@ -1,32 +1,24 @@
 import React from "react";
 import "./product.css"
-import SideBar from "../../Components/SideBar/sidebar"
 import LayoutFilter from "../../Components/LayoutFilter/layoutFilter";
+import LayoutComponent from "../../Components/LayoutComponentUsual/layoutComponent";
 import { FaSearch } from "react-icons/fa";
+import Table from "./Table/table";
 
-function Product(){
-    return(
-        <div className="container-prod">
-            <SideBar />
-            <main>
-                <span>Produto</span>
-
-                <div className="content">
-                    <div className="wrap">
-                    <LayoutFilter>
-                        <div className="wrap-search">
-                            <input />
-                            <FaSearch className="icon" />
-                        </div>
-
-                        <button>Adicionar</button>
-                    </LayoutFilter>
-
-                    opaaaaaaaaaaaaaaaaa
-                    </div>
+function Product() {
+    return (
+        <LayoutComponent title="Produto">
+            <LayoutFilter>
+                <div className="wrap-search">
+                    <input type="search" />
+                    <FaSearch className="icon-search" />
                 </div>
-            </main>
-        </div>
+
+                <button className="adicionar">ADICIONAR</button>
+            </LayoutFilter>
+
+            <Table />
+        </LayoutComponent>
     )
 }
 
