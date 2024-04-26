@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./product.css"
 import LayoutFilter from "../../Components/LayoutFilter/layoutFilter";
 import LayoutComponent from "../../Components/LayoutComponentUsual/layoutComponent";
@@ -6,6 +6,8 @@ import { FaSearch } from "react-icons/fa";
 import Table from "./Table/table";
 
 function Product() {
+
+    const [value, setValue] = useState("")
     return (
         <LayoutComponent title="Produto">
             <LayoutFilter>
