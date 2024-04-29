@@ -2,7 +2,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect, useState } from "react";
 import api from "../../../api"
 
-export default function Table(){
+export default function Table({filter}){
 
     const [data, setData] = useState([])
 
@@ -36,11 +36,15 @@ export default function Table(){
         }
     ))
     
+    const prodFiltrado = initialRows.filter((row) => {
+        const lowerBusca = filter.toLowerCase()
+        return row.produto.toString().toLowerCase().includes(lowerBusca)
+    })
 
     return(
         <div style={{ width: '100%', backgroundColor: 'white'}}>
             <DataGrid columns={columns}
-            rows={initialRows}
+            rows={prodFiltrado}
             initialState={{
                 ...initialRows.initialState,
                 pagination: { paginationModel: { pageSize: 5 } },

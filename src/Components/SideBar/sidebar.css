@@ -1,5 +1,6 @@
 .container-side{
     position: absolute;
+    z-index: 1;
 }
 
 /*tamanho do sidebar*/

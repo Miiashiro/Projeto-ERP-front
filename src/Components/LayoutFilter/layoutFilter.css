@@ -7,4 +7,19 @@
 .resumeItem div{
     display: flex;
     justify-content: space-between;
+
+    @media(max-width: 600px){
+        display: grid;
+        justify-content: center;
+
+        .wrap-search{
+            display: flex;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .wrap-search input{
+            width: 100%;
+        }
+    }
 }
