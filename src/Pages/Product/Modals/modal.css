@@ -14,3 +14,45 @@
     background-color: rgba(119, 136, 153, 0.171);
     cursor: pointer;
 }
+
+.wrap-input-field .produto, .wrap-input-field .descricao, .wrap-input-field .preco{
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.wrap-input-quant{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.wrap-input-quant .quant{
+    width: 105px;
+}
+
+.group-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.close, .add{
+    border-radius: 4px;
+    font-size: 13px;
+    padding: 5px;
+}
+
+.close{
+    background-color: rgba(255, 0, 0, 0.737);
+}
+
+.add{
+    background-color: rgba(0, 128, 0, 0.432);
+}
+
+.close:hover{
+    cursor: pointer;
+}
+
+.add:hover{
+    cursor: pointer;
+}

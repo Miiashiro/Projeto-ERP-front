@@ -6,13 +6,14 @@ export default function Table({filter}){
 
     const [data, setData] = useState([])
 
+    async function getData(){
+        const { data } = await api.get('/produto')
+        setData(data)
+    }
+
     useEffect(() => {
-        async function getData(){
-            const { data } = await api.get('/produto')
-            setData(data)
-        }
         getData()
-    }, [data])
+    }, [])
 
     const columns=[
         {field: "id", headerName: "ID", width: 80},
