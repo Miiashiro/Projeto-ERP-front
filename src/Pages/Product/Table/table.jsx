@@ -1,6 +1,8 @@
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import React, { useEffect, useState } from "react";
+import { FaTrash } from "react-icons/fa";
 import api from "../../../api"
+import EditModal from "../Modals/editModal"
 
 export default function Table({filter}){
 
@@ -22,7 +24,19 @@ export default function Table({filter}){
         {field: "preco", headerName: "Preço", width: 130},
         {field: "quant", headerName: "Quantidade", width: 130},
         {field: "quantMin", headerName: "Quant Min", width: 130},
-        {field: "quantMax", headerName: "Quant Max", width: 130}
+        {field: "quantMax", headerName: "Quant Max", width: 130},
+        {
+            field: 'actions',
+            type: 'actions',
+            width: 80,
+            getActions: (params) => [
+               <GridActionsCellItem>
+                <EditModal params={params}/>
+                
+                <FaTrash/>
+                </GridActionsCellItem>
+            ]
+        }
     ]
 
     const initialRows = data.map((row) => (
