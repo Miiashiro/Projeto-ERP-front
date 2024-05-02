@@ -1,4 +1,4 @@
-import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import api from "../../../api"
@@ -18,7 +18,7 @@ export default function Table({filter}){
     }, [])
 
     const columns=[
-        {field: "id", headerName: "ID", width: 80},
+        {field: "id", headerName: "ID", width: 100},
         {field: "produto", headerName: "Produto", width: 180},
         {field: "desc", headerName: "Descrição", width: 300},
         {field: "preco", headerName: "Preço", width: 130},
@@ -30,11 +30,11 @@ export default function Table({filter}){
             type: 'actions',
             width: 80,
             getActions: (params) => [
-               <GridActionsCellItem>
+               <>
                 <EditModal params={params}/>
                 
                 <FaTrash/>
-                </GridActionsCellItem>
+                </>
             ]
         }
     ]

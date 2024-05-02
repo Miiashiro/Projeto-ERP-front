@@ -64,7 +64,7 @@ const AddProduct = () => {
             </div>
 
             <div className='wrap-input-field'>
-              <TextField className='descricao' label="Descrição"
+              <TextField className='desc' label="Descrição"
                 value={desc} onChange={(e) => setDesc(e.target.value)} />
             </div>
 

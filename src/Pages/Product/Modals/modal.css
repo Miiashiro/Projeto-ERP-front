@@ -4,10 +4,6 @@
     border: 1px solid rgba(201, 201, 201, 0.712);
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-
-    @media(max-width: 600px){
-        width: 100%;
-    }
 }
 
 .adicionar:hover{
@@ -15,7 +11,7 @@
     cursor: pointer;
 }
 
-.wrap-input-field .produto, .wrap-input-field .descricao, .wrap-input-field .preco{
+.wrap-input-field .produto, .wrap-input-field .desc, .wrap-input-field .preco{
     width: 100%;
     margin-bottom: 12px;
 }
@@ -28,6 +24,20 @@
 
 .wrap-input-quant .quant{
     width: 105px;
+}
+
+.wrap-input-prod{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.wrap-input-prod .id{
+    width: 60px;
+}
+
+.wrap-input-prod .produto{
+    width: 250px;
 }
 
 .group-buttons{
