@@ -1,8 +1,8 @@
 import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect, useState } from "react";
-import { FaTrash } from "react-icons/fa";
 import api from "../../../api"
 import EditModal from "../Modals/editModal"
+import DeleteModal from "../Modals/deleteModal"
 
 export default function Table({filter}){
 
@@ -33,8 +33,8 @@ export default function Table({filter}){
                <>
                 <EditModal params={params}/>
                 
-                <FaTrash/>
-                </>
+                <DeleteModal params={params}/>
+               </>
             ]
         }
     ]

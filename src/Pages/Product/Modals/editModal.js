@@ -41,8 +41,8 @@ const EditModal = ({ params }) => {
     setQuantMax(params.row.quantMax)
   }
 
-  async function alterProd(){
-    try{
+  async function alterProd() {
+    try {
       const data = {
         id, name, desc, price, quant, quantMin, quantMax
       }
@@ -51,7 +51,7 @@ const EditModal = ({ params }) => {
 
       alert("Produto alterado")
       window.location.reload()
-    }catch(error){
+    } catch (error) {
       alert(`Erro ao alterar o produto ${error}`)
     }
   }
@@ -76,41 +76,41 @@ const EditModal = ({ params }) => {
           <div className='modal'>
             {/*Id e Nome*/}
             <div className='wrap-input-prod'>
-              <TextField className="id" label="Id" 
-                         value={id} onChange={(e) => setId(e.target.value)}
+              <TextField className="id" label="Id"
+                value={id} onChange={(e) => setId(e.target.value)}
               />
 
-              <TextField className="produto" label="Produto" 
-                         value={name} onChange={(e) => setName(e.target.value)}
+              <TextField className="produto" label="Produto"
+                value={name} onChange={(e) => setName(e.target.value)}
               />
             </div>
 
             {/*Descrição*/}
             <div className='wrap-input-field'>
-              <TextField className='desc' label="Descrição" 
-                         value={desc} onChange={(e) => setDesc(e.target.value)}
+              <TextField className='desc' label="Descrição"
+                value={desc} onChange={(e) => setDesc(e.target.value)}
               />
             </div>
 
             {/*Preço*/}
             <div className='wrap-input-field'>
-              <TextField className='preco' label="Preço" 
-                         value={price} onChange={(e) => setPrice(e.target.value)}
+              <TextField className='preco' label="Preço"
+                value={price} onChange={(e) => setPrice(e.target.value)}
               />
             </div>
 
             {/*Quantidades*/}
             <div className='wrap-input-quant'>
               <TextField className="quant" label="Quantidade"
-                         value={quant} onChange={(e) => setQuant(e.target.value)}
+                value={quant} onChange={(e) => setQuant(e.target.value)}
               />
 
               <TextField className="quant" label="Quant Min"
-                         value={quantMin} onChange={(e) => setQuantMin(e.target.value)}
+                value={quantMin} onChange={(e) => setQuantMin(e.target.value)}
               />
 
               <TextField className="quant" label="Quant Max"
-                         value={quantMax} onChange={(e) => setQuantMax(e.target.value)}
+                value={quantMax} onChange={(e) => setQuantMax(e.target.value)}
               />
             </div>
 
