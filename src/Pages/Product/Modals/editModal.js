@@ -117,7 +117,7 @@ const EditModal = ({ params }) => {
             <div className='group-buttons'>
               <button className='close' onClick={toggle}>Fechar</button>
 
-              <button className='add' onClick={alterProd}>Alterar</button>
+              <button className='alter' onClick={alterProd}>Alterar</button>
             </div>
           </div>
         </Box>

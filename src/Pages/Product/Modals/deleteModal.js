@@ -3,6 +3,7 @@ import { GridActionsCellItem } from '@mui/x-data-grid'
 import React, { useState } from 'react'
 import { FaTrash } from 'react-icons/fa'
 import api from '../../../api';
+import './modal.css'
 
 const style = {
     position: 'absolute',

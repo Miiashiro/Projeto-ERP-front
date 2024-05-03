@@ -1,3 +1,4 @@
+/*botão adicionar / table.jsx*/
 .adicionar{
     padding: 4px;
     border-radius: 4px;
@@ -11,21 +12,25 @@
     cursor: pointer;
 }
 
+/*Caixa de texto de prodtuo, descricao e preco / editModal.js*/
 .wrap-input-field .produto, .wrap-input-field .desc, .wrap-input-field .preco{
     width: 100%;
     margin-bottom: 12px;
 }
 
+/*Margin das caixas dos textos de quantidades*/
 .wrap-input-quant{
     display: flex;
     justify-content: space-between;
     margin-bottom: 12px;
 }
 
+/*Caixa de texto das quantidades*/
 .wrap-input-quant .quant{
     width: 105px;
 }
 
+/*Margin da caixa dos textos do id e produto / editModal.js*/
 .wrap-input-prod{
     display: flex;
     justify-content: space-between;
@@ -40,12 +45,13 @@
     width: 250px;
 }
 
+/*Margin dos botoes*/
 .group-buttons{
     display: flex;
     justify-content: space-between;
 }
 
-.close, .add{
+.close, .add, .alter, .delete{
     border-radius: 4px;
     font-size: 13px;
     padding: 5px;
@@ -55,14 +61,10 @@
     background-color: rgba(255, 0, 0, 0.737);
 }
 
-.add{
+.add, .alter, .delete{
     background-color: rgba(0, 128, 0, 0.432);
 }
 
-.close:hover{
-    cursor: pointer;
-}
-
-.add:hover{
+.close:hover, .add:hover, .alter:hover, .delete:hover{
     cursor: pointer;
 }
