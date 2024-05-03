@@ -3,6 +3,7 @@ import { GridActionsCellItem } from '@mui/x-data-grid';
 import React from 'react'
 import { useState } from 'react';
 import { FaEdit } from "react-icons/fa";
+import api from "../../../api"
 
 const style = {
   position: 'absolute',
@@ -19,12 +20,40 @@ const style = {
 const EditModal = ({ params }) => {
 
   const [open, setOpen] = useState(false)
+  const [id, setId] = useState("")
+  const [name, setName] = useState("")
+  const [desc, setDesc] = useState("")
+  const [price, setPrice] = useState("")
+  const [quant, setQuant] = useState("")
+  const [quantMin, setQuantMin] = useState("")
+  const [quantMax, setQuantMax] = useState("")
 
   const toggle = () => setOpen(!open)
 
   const selectProd = (params) => {
     toggle()
-    
+    setId(params.row.id)
+    setName(params.row.produto)
+    setDesc(params.row.desc)
+    setPrice(params.row.preco)
+    setQuant(params.row.quant)
+    setQuantMin(params.row.quantMin)
+    setQuantMax(params.row.quantMax)
+  }
+
+  async function alterProd(){
+    try{
+      const data = {
+        id, name, desc, price, quant, quantMin, quantMax
+      }
+
+      await api.put('/produto', data)
+
+      alert("Produto alterado")
+      window.location.reload()
+    }catch(error){
+      alert(`Erro ao alterar o produto ${error}`)
+    }
   }
 
   return (
@@ -45,35 +74,50 @@ const EditModal = ({ params }) => {
           <hr />
           <br />
           <div className='modal'>
+            {/*Id e Nome*/}
             <div className='wrap-input-prod'>
-              <TextField className="id" label="Id" />
+              <TextField className="id" label="Id" 
+                         value={id} onChange={(e) => setId(e.target.value)}
+              />
 
-              <TextField className="produto" label="Produto" />
+              <TextField className="produto" label="Produto" 
+                         value={name} onChange={(e) => setName(e.target.value)}
+              />
             </div>
 
+            {/*Descrição*/}
             <div className='wrap-input-field'>
-              <TextField className='desc' label="Descrição" />
+              <TextField className='desc' label="Descrição" 
+                         value={desc} onChange={(e) => setDesc(e.target.value)}
+              />
             </div>
 
+            {/*Preço*/}
             <div className='wrap-input-field'>
-              <TextField className='preco' label="Preço" />
+              <TextField className='preco' label="Preço" 
+                         value={price} onChange={(e) => setPrice(e.target.value)}
+              />
             </div>
 
+            {/*Quantidades*/}
             <div className='wrap-input-quant'>
               <TextField className="quant" label="Quantidade"
-                 />
+                         value={quant} onChange={(e) => setQuant(e.target.value)}
+              />
 
               <TextField className="quant" label="Quant Min"
-                 />
+                         value={quantMin} onChange={(e) => setQuantMin(e.target.value)}
+              />
 
               <TextField className="quant" label="Quant Max"
+                         value={quantMax} onChange={(e) => setQuantMax(e.target.value)}
               />
             </div>
 
             <div className='group-buttons'>
               <button className='close' onClick={toggle}>Fechar</button>
 
-              <button className='add'>Alterar</button>
+              <button className='add' onClick={alterProd}>Alterar</button>
             </div>
           </div>
         </Box>
