@@ -57,7 +57,7 @@ export default function Table({filter}){
     })
 
     return(
-        <div style={{ width: '100%', backgroundColor: 'white'}}>
+        <div style={{ width: '100%', height: 400, backgroundColor: 'white'}}>
             <DataGrid columns={columns}
             rows={prodFiltrado}
             initialState={{
