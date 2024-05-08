@@ -20,6 +20,7 @@ export default function Table(){
         {field: "email", headerName: "Email", width: 180},
         {field: "telefone", headerName: "Telefone", width: 120},
         {field: "cep", headerName: "Cep", width: 110},
+        {field: "cnpj", headerName: "CNPJ", width: 110},
         {field: "endereco", headerName: "Endereço", width: 220},
         {field: "cidade", headerName: "Cidade", width: 120},
         {field: "pais", headerName: "País", width: 120}
@@ -32,6 +33,7 @@ export default function Table(){
             email: row.email,
             telefone: row.tel,
             cep: row.cep,
+            cnpj: row.cnpj,
             endereco: row.address,
             cidade: row.city,
             pais: row.country
