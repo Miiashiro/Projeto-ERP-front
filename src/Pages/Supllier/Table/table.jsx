@@ -26,7 +26,15 @@ export default function Table(){
         {field: "endereco", headerName: "Endereço", width: 200},
         {field: "bairro", headerName: "Bairro", width: 120},
         {field: "cidade", headerName: "Cidade", width: 120},
-        {field: "pais", headerName: "País", width: 100}
+        {field: "pais", headerName: "País", width: 100},
+        {
+            field: "actions",
+            type: "actions",
+            width: 80,
+            getActions: (params) => [
+                <>opa</>
+            ]
+        }
     ]
 
     const initialRows = data.map((row) => (
