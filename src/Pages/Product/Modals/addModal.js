@@ -34,14 +34,13 @@ const AddProduct = () => {
       }
 
       await api.post('/produto', data)
-      alert("Cadastro concluido")
+      alert("Produto cadastrado")
 
       window.location.reload()
     } catch (error) {
       alert(`Erro ao cadastrar produto`)
     }
   }
-
 
   return (
     <>

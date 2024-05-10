@@ -4,7 +4,7 @@ import LayoutComponent from "../../Components/LayoutComponentUsual/layoutCompone
 import LayoutFilter from "../../Components/LayoutFilter/layoutFilter";
 import "./supllier.css"
 import Table from "./Table/table";
-
+import ModalAdd from "./Modals/modalAdd"
 
 function Fornecedor() {
     return (
@@ -15,7 +15,7 @@ function Fornecedor() {
                     <FaSearch className="icon-search" />
                 </div>
 
-                <button>Adicionar</button>
+                <ModalAdd />
             </LayoutFilter>
 
             <Table />

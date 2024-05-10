@@ -12,37 +12,32 @@
     cursor: pointer;
 }
 
-/*Caixa de texto de prodtuo, descricao e preco */
-.wrap-input-field .produto, .wrap-input-field .desc, .wrap-input-field .preco{
+/*Inputs*/
+.wrap-input-field .fornecedor, .wrap-input-field .email, .wrap-input-field .tel, .wrap-input-field .endereco, .wrap-input-field .bairro{
     width: 100%;
     margin-bottom: 12px;
 }
 
-/*Margin das caixas dos textos de quantidades*/
-.wrap-input-quant{
+/*grupo de inputs*/
+.wrap-input-c, .wrap-input-local, .wrap-input-a{
     display: flex;
     justify-content: space-between;
     margin-bottom: 12px;
 }
 
-/*Caixa de texto das quantidades*/
-.wrap-input-quant .quant{
-    width: 105px;
+/*CNPJ e CEP*/
+.wrap-input-c .cnpj, .wrap-input-c .cep{
+    width: 160px;
 }
 
-/*Margin da caixa dos textos do id e produto / editModal.js*/
-.wrap-input-prod{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
+/*cidade e pais*/
+.wrap-input-local .cidade, .wrap-input-local .pais{
+    width: 160px;
 }
 
-.wrap-input-prod .id{
-    width: 60px;
-}
-
-.wrap-input-prod .produto{
-    width: 250px;
+/*email e telefone*/
+.wrap-input-a .email, .wrap-input-a .tel{
+    width: 160px;
 }
 
 /*Margin dos botoes*/

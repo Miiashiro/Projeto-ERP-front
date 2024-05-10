@@ -14,16 +14,19 @@ export default function Table(){
         getData()
     }, [])
 
+    console.log(data)
+    
     const columns=[
-        {field: "id", headerName: "ID", width: 100},
+        {field: "id", headerName: "ID", width: 90},
         {field: "fornecedor", headerName: "Fornecedor", width: 180},
         {field: "email", headerName: "Email", width: 180},
-        {field: "telefone", headerName: "Telefone", width: 120},
-        {field: "cep", headerName: "Cep", width: 110},
-        {field: "cnpj", headerName: "CNPJ", width: 110},
-        {field: "endereco", headerName: "Endereço", width: 220},
+        {field: "telefone", headerName: "Telefone", width: 110},
+        {field: "cnpj", headerName: "CNPJ", width: 100},
+        {field: "cep", headerName: "Cep", width: 100},
+        {field: "endereco", headerName: "Endereço", width: 200},
+        {field: "bairro", headerName: "Bairro", width: 120},
         {field: "cidade", headerName: "Cidade", width: 120},
-        {field: "pais", headerName: "País", width: 120}
+        {field: "pais", headerName: "País", width: 100}
     ]
 
     const initialRows = data.map((row) => (
@@ -32,9 +35,10 @@ export default function Table(){
             fornecedor: row.supllier_name,
             email: row.email,
             telefone: row.tel,
-            cep: row.cep,
             cnpj: row.cnpj,
+            cep: row.cep,
             endereco: row.address,
+            bairro: row.neighborhood,
             cidade: row.city,
             pais: row.country
         }
