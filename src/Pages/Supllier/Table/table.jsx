@@ -4,7 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import ModalEdit from "../Modals/modalEdit";
 import ModalDelete from "../Modals/modalDelete";
 
-export default function Table(){
+export default function Table({filter}){
     const [data, setData] = useState([])
 
     async function getData(){
@@ -35,7 +35,7 @@ export default function Table(){
                 <>
                     <ModalEdit params={params}/>
 
-                    <ModalDelete />
+                    <ModalDelete params={params}/>
                 </>
             ]
         }
@@ -56,10 +56,15 @@ export default function Table(){
         }
     ))
 
+    const forneFiltrado = initialRows.filter((row) => {
+        const lowerSearch = filter.toLowerCase()
+        return row.fornecedor.toString().toLowerCase().includes(lowerSearch)
+    })
+
     return(
         <div style={{ width: '100%', height: 400, backgroundColor: 'white'}}>
             <DataGrid columns={columns}
-            rows={initialRows}
+            rows={forneFiltrado}
             initialState={{
                 ...initialRows.initialState,
                 pagination: { paginationModel: { pageSize: 5 } },

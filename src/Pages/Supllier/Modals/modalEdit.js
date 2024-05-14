@@ -2,6 +2,7 @@ import { Box, Modal, TextField } from '@mui/material';
 import { GridActionsCellItem } from '@mui/x-data-grid';
 import React, { useState } from 'react'
 import { FaEdit } from 'react-icons/fa';
+import api from '../../../api';
 
 const style = {
   position: 'absolute',
@@ -44,6 +45,24 @@ const ModalEdit = ({ params }) => {
     setCity(params.row.cidade)
     setCountry(params.row.pais)
   }
+
+  async function editSupllier(){
+    try{
+      const data = {
+        id, supllier, email, tel, cnpj, cep, address, neighborhood, city, country
+      }
+
+      await api.put('/fornecedor', data)
+
+      alert("Fornecedor alterado!")
+
+      window.location.reload()
+
+    }catch(error){
+      alert(`Erro ao atualiar. Erro ${error}.`)
+    }
+  }
+
   return (
     <>
       <GridActionsCellItem
@@ -110,7 +129,7 @@ const ModalEdit = ({ params }) => {
             <div className='group-buttons'>
               <button className='close' onClick={toggle}>Fechar</button>
 
-              <button className='alter'>Alterar</button>
+              <button className='alter' onClick={editSupllier}>Alterar</button>
             </div>
           </div>
         </Box>
