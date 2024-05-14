@@ -9,6 +9,7 @@ import ModalAdd from "./Modals/modalAdd"
 function Fornecedor() {
 
     const [filter, setFilter] = useState("")
+    
     return (
         <LayoutComponent title="Fornecedor">
             <LayoutFilter>
