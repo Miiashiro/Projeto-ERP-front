@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import api from "../../../api";
 import { DataGrid } from "@mui/x-data-grid";
+import ModalEdit from "../Modals/modalEdit";
+import ModalDelete from "../Modals/modalDelete";
 
 export default function Table(){
     const [data, setData] = useState([])
@@ -13,8 +15,6 @@ export default function Table(){
     useEffect(() => {
         getData()
     }, [])
-
-    console.log(data)
     
     const columns=[
         {field: "id", headerName: "ID", width: 90},
@@ -32,7 +32,11 @@ export default function Table(){
             type: "actions",
             width: 80,
             getActions: (params) => [
-                <>opa</>
+                <>
+                    <ModalEdit params={params}/>
+
+                    <ModalDelete />
+                </>
             ]
         }
     ]

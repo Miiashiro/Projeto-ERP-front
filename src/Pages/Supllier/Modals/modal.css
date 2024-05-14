@@ -19,7 +19,7 @@
 }
 
 /*grupo de inputs*/
-.wrap-input-c, .wrap-input-local, .wrap-input-a{
+.wrap-input-c, .wrap-input-local, .wrap-input-a, .wrap-input-prod{
     display: flex;
     justify-content: space-between;
     margin-bottom: 12px;
@@ -38,6 +38,15 @@
 /*email e telefone*/
 .wrap-input-a .email, .wrap-input-a .tel{
     width: 160px;
+}
+
+/*Id e fornecedor / modalEdit.js*/
+.wrap-input-prod .id{
+    width: 70px;
+}
+
+.wrap-input-prod .fornecedor{
+    width: 250px;
 }
 
 /*Margin dos botoes*/
