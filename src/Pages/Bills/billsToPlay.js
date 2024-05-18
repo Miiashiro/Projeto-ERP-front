@@ -2,6 +2,8 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import LayoutComponent from "../../Components/LayoutComponentUsual/layoutComponent";
 import LayoutFilter from "../../Components/LayoutFilter/layoutFilter";
+import ModalAdd from "./Modals/modalAdd";
+import "./billsToPay.css"
 
 function Account(){
     return(
@@ -9,10 +11,10 @@ function Account(){
             <LayoutFilter>
                 <div className="wrap-search">
                     <input type="search" />
-                    <FaSearch />
+                    <FaSearch className="icon-search"/>
                 </div>
 
-                <button>Ola</button>
+                <ModalAdd />
             </LayoutFilter>
         </LayoutComponent>
     )

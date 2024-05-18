@@ -1,0 +1,21 @@
+.wrap-search{
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    /*box-shadow: 5px 2px 6px -1px rgba(50,56,49,0.64);*/
+}
+
+.wrap-search input{
+    border: none;
+    outline: none;
+    font-size: 17px;
+    border-radius: 10px;
+    padding-left: 5px;
+    height: 26px;
+}
+
+.icon-search{
+    width: 30px;
+    font-size: 18px;
+}

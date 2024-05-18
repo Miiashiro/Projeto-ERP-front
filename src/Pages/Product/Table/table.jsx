@@ -1,8 +1,8 @@
 import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect, useState } from "react";
 import api from "../../../api"
-import EditModal from "../Modals/editModal"
-import DeleteModal from "../Modals/deleteModal"
+import EditModal from "../Modals/modalEdit"
+import DeleteModal from "../Modals/modalDelete"
 
 export default function Table({filter}){
 

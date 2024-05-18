@@ -55,6 +55,8 @@
     border-radius: 4px;
     font-size: 13px;
     padding: 5px;
+    cursor: pointer;
+    color: #fff;
 }
 
 .close{
@@ -62,9 +64,5 @@
 }
 
 .add, .alter, .delete{
-    background-color: rgba(0, 128, 0, 0.432);
-}
-
-.close:hover, .add:hover, .alter:hover, .delete:hover{
-    cursor: pointer;
+    background-color: rgba(12, 65, 238, 0.783);
 }

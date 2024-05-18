@@ -15,7 +15,7 @@ const style = {
   p: 4,
 };
 
-const AddProduct = () => {
+const ModalAdd = () => {
 
   const [open, setOpen] = useState(false)
   const [name, setName] = useState("")
@@ -95,4 +95,4 @@ const AddProduct = () => {
   )
 }
 
-export default AddProduct
+export default ModalAdd

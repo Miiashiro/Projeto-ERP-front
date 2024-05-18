@@ -4,7 +4,7 @@ import LayoutFilter from "../../Components/LayoutFilter/layoutFilter";
 import LayoutComponent from "../../Components/LayoutComponentUsual/layoutComponent";
 import { FaSearch } from "react-icons/fa";
 import Table from "./Table/table";
-import AddModal from "./Modals/addModal";
+import ModalAdd from "./Modals/modalAdd";
 
 function Product() {
 
@@ -18,7 +18,7 @@ function Product() {
                     <FaSearch className="icon-search" />
                 </div>
 
-                <AddModal />
+                <ModalAdd />
             </LayoutFilter>
 
             <Table filter={filter}/>

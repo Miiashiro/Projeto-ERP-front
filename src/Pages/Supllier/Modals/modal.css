@@ -59,6 +59,7 @@
     border-radius: 4px;
     font-size: 13px;
     padding: 5px;
+    color: #fff;
 }
 
 .close{
@@ -66,7 +67,7 @@
 }
 
 .add, .alter, .delete{
-    background-color: rgba(0, 128, 0, 0.432);
+    background-color: rgba(12, 65, 238, 0.783);
 }
 
 .close:hover, .add:hover, .alter:hover, .delete:hover{
