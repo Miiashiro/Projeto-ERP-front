@@ -6,8 +6,10 @@ import DeleteModal from "../Modals/modalDelete"
 
 export default function Table({filter}){
 
+    //Atributo
     const [data, setData] = useState([])
 
+    //Método get
     async function getData(){
         const { data } = await api.get('/produto')
         setData(data)
@@ -17,6 +19,7 @@ export default function Table({filter}){
         getData()
     }, [])
 
+    //Colunas
     const columns=[
         {field: "id", headerName: "ID", width: 100},
         {field: "produto", headerName: "Produto", width: 180},
@@ -39,6 +42,7 @@ export default function Table({filter}){
         }
     ]
 
+    //Linha
     const initialRows = data.map((row) => (
         {
             id: row.id_prod,
@@ -51,6 +55,7 @@ export default function Table({filter}){
         }
     ))
     
+    //Filtro de busca
     const prodFiltrado = initialRows.filter((row) => {
         const lowerBusca = filter.toLowerCase()
         return row.produto.toString().toLowerCase().includes(lowerBusca)

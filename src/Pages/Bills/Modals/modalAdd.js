@@ -1,6 +1,6 @@
 import { Box, Modal, TextField } from '@mui/material';
 import React, { useState } from 'react'
-import './modalBills.css'
+import './modals.css'
 import api from '../../../api';
 
 const style = {
@@ -38,6 +38,7 @@ const ModalAdd = () => {
       alert(`Erro ao cadastrar. Erro ${error}`)
     }
   }
+
   return (
     <div>
       <button className='adicionar' onClick={toggle}>ADICIONAR</button>

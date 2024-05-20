@@ -30,7 +30,7 @@ const EditModal = ({ params }) => {
 
   const toggle = () => setOpen(!open)
 
-  const selectProd = (params) => {
+  const handleShowEdit = (params) => {
     toggle()
     setId(params.row.id)
     setName(params.row.produto)
@@ -61,7 +61,7 @@ const EditModal = ({ params }) => {
       <GridActionsCellItem
         icon={<FaEdit />}
         label="Edit"
-        onClick={() => selectProd(params)}
+        onClick={() => handleShowEdit(params)}
       />
 
       <Modal open={open}
