@@ -55,7 +55,7 @@ const ModalAdd = () => {
           <br />
           <div className='modal'>
 
-            <TextField className='conta' label="Conta" type="text" 
+            <TextField className='conta' label="Conta" type="text"
               value={bill} onChange={(e) => setBill(e.target.value)}/>
 
             <TextField className='preco' label="Valor" type="number" 
