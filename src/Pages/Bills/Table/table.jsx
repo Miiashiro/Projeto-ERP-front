@@ -3,6 +3,7 @@ import api from "../../../api";
 import { DataGrid } from "@mui/x-data-grid";
 import moment from "moment/moment";
 import ModalEdit from "../Modals/modalEdit";
+import ModalDelete from "../Modals/modalDelete";
 
 export default function Table({filter}){
 
@@ -32,6 +33,8 @@ export default function Table({filter}){
             getActions: (params) => [
                 <>
                     <ModalEdit params={params}/>
+
+                    <ModalDelete params={params}/>
                 </>
             ]
         }
