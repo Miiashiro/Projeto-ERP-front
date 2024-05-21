@@ -53,6 +53,7 @@
 .group-buttons{
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
 .close, .add, .alter, .delete{
@@ -68,8 +69,4 @@
 
 .add, .alter, .delete{
     background-color: rgba(12, 65, 238, 0.783);
-}
-
-.close:hover, .add:hover, .alter:hover, .delete:hover{
-    cursor: pointer;
 }

@@ -36,6 +36,7 @@
 .group-buttons{
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
 .close, .add, .alter, .delete{
@@ -43,10 +44,10 @@
     font-size: 13px;
     padding: 5px;
     cursor: pointer;
+    color: #fff;
 }
 
 
-.add, .alter{
+.add, .alter, .delete{
     background-color: rgba(12, 65, 238, 0.783);
-    color: #fff;
 }

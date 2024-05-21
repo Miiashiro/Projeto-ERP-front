@@ -18,18 +18,21 @@ const style = {
 
 const ModalDelete = ({ params }) => {
 
+  //Atributos
   const [open, setOpen] = useState(false)
   const [id, setId] = useState("")
   const [bill, setBill] = useState("")
 
   const toggle = () => setOpen(!open)
 
+  //Set
   const handleShowDelete = (params) => {
     toggle()
     setId(params.row.id)
     setBill(params.row.conta)
   }
 
+  //Método delete
   async function deleteBill(){
     try{
       await api.delete(`/conta/${id}`)
@@ -41,6 +44,7 @@ const ModalDelete = ({ params }) => {
       alert(`Erro ao deletar produto. Erro ${error}`)
     }
   }
+  
   return (
     <>
       <GridActionsCellItem
@@ -56,11 +60,10 @@ const ModalDelete = ({ params }) => {
       >
         <Box sx={style}>
           <h2>Deletar Conta</h2>
-          <br />
           <hr />
+          <br />
           <div className="Modal">
             <span>Deseja excluir a conta {bill}?</span>
-
             <div className='group-buttons'>
               <button className='close' onClick={toggle}>Fechar</button>
 

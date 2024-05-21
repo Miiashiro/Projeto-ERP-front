@@ -23,7 +23,7 @@ export default function Table({filter}){
     //Colunas
     const columns=[
         {field: "id", headerName: "Id", width: 100},
-        {field: "conta", headerName: "Conta", width: 180},
+        {field: "conta", headerName: "Conta", width: 210},
         {field: "preco", headerName: "Preco", width: 180},
         {field: "data", headerName: "Data Vencimento", width: 180},
         {
