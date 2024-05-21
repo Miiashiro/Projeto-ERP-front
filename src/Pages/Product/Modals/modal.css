@@ -13,7 +13,7 @@
 }
 
 /*Caixa de texto de prodtuo, descricao e preco */
-.wrap-input-field .produto, .wrap-input-field .desc, .wrap-input-field .preco{
+.modal .produto, .modal .desc, .modal .preco{
     width: 100%;
     margin-bottom: 12px;
 }
@@ -31,17 +31,17 @@
 }
 
 /*Margin da caixa dos textos do id e produto / editModal.js*/
-.wrap-input-prod{
+.wrap-input-field{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 12px;
+    
 }
 
-.wrap-input-prod .id{
+.wrap-input-field .id{
     width: 70px;
 }
 
-.wrap-input-prod .produto{
+.wrap-input-field .produto{
     width: 250px;
 }
 

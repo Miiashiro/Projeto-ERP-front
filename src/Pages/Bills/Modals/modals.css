@@ -18,6 +18,19 @@
     margin-bottom: 12px;
 }
 
+.wrap-input-field{
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrap-input-field .id{
+    width: 70;
+}
+
+.wrap-input-field .conta{
+    width: 250px;
+}
+
 /*Margin dos botoes*/
 .group-buttons{
     display: flex;

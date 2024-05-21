@@ -74,8 +74,9 @@ const EditModal = ({ params }) => {
           <hr />
           <br />
           <div className='modal'>
+            
             {/*Id e Nome*/}
-            <div className='wrap-input-prod'>
+            <div className='wrap-input-field'>
               <TextField className="id" label="Id"
                 value={id} onChange={(e) => setId(e.target.value)}
               />
@@ -86,18 +87,14 @@ const EditModal = ({ params }) => {
             </div>
 
             {/*Descrição*/}
-            <div className='wrap-input-field'>
-              <TextField className='desc' label="Descrição"
-                value={desc} onChange={(e) => setDesc(e.target.value)}
-              />
-            </div>
+            <TextField className='desc' label="Descrição"
+              value={desc} onChange={(e) => setDesc(e.target.value)}
+            />
 
             {/*Preço*/}
-            <div className='wrap-input-field'>
-              <TextField className='preco' label="Preço"
-                value={price} onChange={(e) => setPrice(e.target.value)}
-              />
-            </div>
+            <TextField className='preco' label="Preço"
+              value={price} onChange={(e) => setPrice(e.target.value)}
+            />
 
             {/*Quantidades*/}
             <div className='wrap-input-quant'>

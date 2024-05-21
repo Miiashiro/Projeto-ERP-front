@@ -57,20 +57,15 @@ const ModalAdd = () => {
           <hr />
           <br />
           <div className='modal'>
-            <div className='wrap-input-field'>
-              <TextField className="produto" label="Produto"
-                value={name} onChange={(e) => setName(e.target.value)} />
-            </div>
 
-            <div className='wrap-input-field'>
-              <TextField className='desc' label="Descrição"
-                value={desc} onChange={(e) => setDesc(e.target.value)} />
-            </div>
+            <TextField className="produto" label="Produto"
+              value={name} onChange={(e) => setName(e.target.value)} />
 
-            <div className='wrap-input-field'>
-              <TextField className='preco' label="Preço"
-                value={price} onChange={(e) => setPrice(e.target.value)} />
-            </div>
+            <TextField className='desc' label="Descrição"
+              value={desc} onChange={(e) => setDesc(e.target.value)} />
+
+            <TextField className='preco' label="Preço"
+              value={price} onChange={(e) => setPrice(e.target.value)} />
 
             <div className='wrap-input-quant'>
               <TextField className="quant" label="Quantidade"

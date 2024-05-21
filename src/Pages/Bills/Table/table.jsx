@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import api from "../../../api";
 import { DataGrid } from "@mui/x-data-grid";
 import moment from "moment/moment";
+import ModalEdit from "../Modals/modalEdit";
 
 export default function Table({filter}){
 
@@ -23,7 +24,17 @@ export default function Table({filter}){
         {field: "id", headerName: "Id", width: 100},
         {field: "conta", headerName: "Conta", width: 180},
         {field: "preco", headerName: "Preco", width: 180},
-        {field: "data", headerName: "Data Vencimento", width: 180}
+        {field: "data", headerName: "Data Vencimento", width: 180},
+        {
+            field: "actions",
+            type: "actions",
+            width: 80,
+            getActions: (params) => [
+                <>
+                    <ModalEdit params={params}/>
+                </>
+            ]
+        }
     ]
     
     //Linha

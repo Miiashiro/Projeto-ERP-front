@@ -6,7 +6,7 @@ import ModalAdd from "./Modals/modalAdd";
 import "./billsToPay.css"
 import Table from "./Table/table"
 
-function Account(){
+function Bill(){
 
     const [filter, setFilter] = useState("")
     
@@ -26,4 +26,4 @@ function Account(){
     )
 }
 
-export default Account
+export default Bill
