@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import api from "../../../api"
 import EditModal from "../Modals/modalEdit"
 import DeleteModal from "../Modals/modalDelete"
+import "../product.css"
 
 export default function Table({filter}){
 
@@ -62,7 +63,7 @@ export default function Table({filter}){
     })
 
     return(
-        <div style={{ width: '100%', height: 400, backgroundColor: 'white'}}>
+        <div className="table">
             <DataGrid columns={columns}
             rows={prodFiltrado}
             initialState={{

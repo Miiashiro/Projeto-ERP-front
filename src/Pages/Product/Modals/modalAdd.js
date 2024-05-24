@@ -2,6 +2,8 @@ import { Box, Modal, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import api from '../../../api';
 import './modal.css'
+import InputAdornment from '@mui/material/InputAdornment';
+import { NumericFormat } from 'react-number-format';
 
 const style = {
   position: 'absolute',
@@ -14,6 +16,25 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
+const NumericFormatCustom = React.forwardRef(
+  function NumericFormatCustom(props) {
+    const { onChange, ...other } = props;
+
+    return (
+      <NumericFormat
+        {...other}
+        //perguntar o que fica melhor
+        decimalScale={2} 
+        fixedDecimalScale={true}
+
+        thousandSeparator=","
+        allowedDecimalSeparators={['.']}
+        prefix="R$"
+      />
+    );
+  },
+);
 
 const ModalAdd = () => {
 
@@ -64,8 +85,12 @@ const ModalAdd = () => {
             <TextField className='desc' label="Descrição"
               value={desc} onChange={(e) => setDesc(e.target.value)} />
 
+            
             <TextField className='preco' label="Preço"
-              value={price} onChange={(e) => setPrice(e.target.value)} />
+              value={price} onChange={(e) => setPrice(e.target.value)}
+              InputProps={{
+                inputComponent: NumericFormatCustom,
+              }} />
 
             <div className='wrap-input-quant'>
               <TextField className="quant" label="Quantidade"

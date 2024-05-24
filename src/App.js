@@ -5,6 +5,7 @@ import Product from "./Pages/Product/product";
 import Login from "./Pages/Start/login";
 import Registration from "./Pages/Start/registration";
 import Fornecedor from "./Pages/Supllier/supllier";
+import Sales from "./Pages/Sales/sales"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/Produto" element={<Product/>} />
         <Route path="/Fornecedor" element={<Fornecedor />} />
         <Route path="/Contas" element={<Bills />} />
+        <Route path="/Venda" element={<Sales />} />
       </Routes>
     </BrowserRouter>
   );

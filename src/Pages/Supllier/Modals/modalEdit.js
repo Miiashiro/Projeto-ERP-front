@@ -3,6 +3,7 @@ import { GridActionsCellItem } from '@mui/x-data-grid';
 import React, { useState } from 'react'
 import { FaEdit } from 'react-icons/fa';
 import api from '../../../api';
+import "./modal.css"
 
 const style = {
   position: 'absolute',
@@ -83,7 +84,7 @@ const ModalEdit = ({ params }) => {
           <div className='modal'>
             {/*Id e Nome*/}
             <div className='wrap-input-prod'>
-              <TextField className='id' label="Id"
+              <TextField className='id' label="Id" disabled
                 value={id} onChange={(e) => setId(e.target.value)}
               />
 

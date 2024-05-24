@@ -77,7 +77,7 @@ const EditModal = ({ params }) => {
             
             {/*Id e Nome*/}
             <div className='wrap-input-field'>
-              <TextField className="id" label="Id"
+              <TextField className="id" label="Id" disabled
                 value={id} onChange={(e) => setId(e.target.value)}
               />
 

@@ -24,7 +24,7 @@ export default function Table({filter}){
     const columns=[
         {field: "id", headerName: "Id", width: 100},
         {field: "conta", headerName: "Conta", width: 210},
-        {field: "preco", headerName: "Preco", width: 180},
+        {field: "preco", headerName: "Preço", width: 180},
         {field: "data", headerName: "Data Vencimento", width: 180},
         {
             field: "actions",
@@ -57,7 +57,7 @@ export default function Table({filter}){
     })
 
     return(
-        <div style={{ width: '100%', height: 400, backgroundColor: 'white'}}>
+        <div className="table">
             <DataGrid columns={columns}
             rows={contaFiltrada}
             initialState={{

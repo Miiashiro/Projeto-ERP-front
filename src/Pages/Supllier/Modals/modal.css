@@ -3,8 +3,10 @@
     padding: 4px;
     border-radius: 4px;
     border: 1px solid rgba(201, 201, 201, 0.712);
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    /*background-color: rgb(255, 255, 255);*/
+    /*box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;*/
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: #ffffffe8;
 }
 
 .adicionar:hover{

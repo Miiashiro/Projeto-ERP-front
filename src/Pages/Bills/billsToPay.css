@@ -19,3 +19,16 @@
     width: 30px;
     font-size: 18px;
 }
+
+.wrap-table{
+    padding-top: 30px;
+}
+
+.table{
+    width: 100%; 
+    height: 400px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(201, 201, 201, 0.712);
+}

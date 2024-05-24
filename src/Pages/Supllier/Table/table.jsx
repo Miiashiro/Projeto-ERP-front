@@ -3,6 +3,7 @@ import api from "../../../api";
 import { DataGrid } from "@mui/x-data-grid";
 import ModalEdit from "../Modals/modalEdit";
 import ModalDelete from "../Modals/modalDelete";
+import "../supllier.css"
 
 export default function Table({filter}){
     const [data, setData] = useState([])
@@ -62,7 +63,7 @@ export default function Table({filter}){
     })
 
     return(
-        <div style={{ width: '100%', height: 400, backgroundColor: 'white'}}>
+        <div className="table">
             <DataGrid columns={columns}
             rows={forneFiltrado}
             initialState={{
