@@ -4,6 +4,7 @@ import React from 'react'
 import { useState } from 'react';
 import { FaEdit } from "react-icons/fa";
 import api from "../../../api"
+import { NumericFormat } from 'react-number-format';
 
 const style = {
   position: 'absolute',
@@ -16,6 +17,34 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
+const NumericFormatCustom = React.forwardRef(
+  function NumericFormatCustom(props, ref) {
+    const { onChange, ...other } = props;
+
+    return (
+      <NumericFormat
+        {...other}
+        getInputRef={ref}
+        onValueChange={(values) => {
+          onChange({
+            target: {
+              name: props.name,
+              value: values.value,
+            },
+          });
+        }}
+        //perguntar o que fica melhor
+        decimalScale={2} 
+        fixedDecimalScale={true}
+
+        thousandSeparator=","
+        allowedDecimalSeparators={['.']}
+        prefix="R$"
+      />
+    );
+  },
+);
 
 const EditModal = ({ params }) => {
 
@@ -76,7 +105,7 @@ const EditModal = ({ params }) => {
           <div className='modal'>
             
             {/*Id e Nome*/}
-            <div className='wrap-input-field'>
+            <div className='wrap-input-group'>
               <TextField className="id" label="Id" disabled
                 value={id} onChange={(e) => setId(e.target.value)}
               />
@@ -94,6 +123,9 @@ const EditModal = ({ params }) => {
             {/*Preço*/}
             <TextField className='preco' label="Preço"
               value={price} onChange={(e) => setPrice(e.target.value)}
+              InputProps={{
+                inputComponent: NumericFormatCustom,
+              }}
             />
 
             {/*Quantidades*/}

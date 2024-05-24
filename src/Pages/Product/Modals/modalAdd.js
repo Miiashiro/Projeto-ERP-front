@@ -2,7 +2,6 @@ import { Box, Modal, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import api from '../../../api';
 import './modal.css'
-import InputAdornment from '@mui/material/InputAdornment';
 import { NumericFormat } from 'react-number-format';
 
 const style = {
@@ -18,12 +17,21 @@ const style = {
 };
 
 const NumericFormatCustom = React.forwardRef(
-  function NumericFormatCustom(props) {
+  function NumericFormatCustom(props, ref) {
     const { onChange, ...other } = props;
 
     return (
       <NumericFormat
         {...other}
+        getInputRef={ref}
+        onValueChange={(values) => {
+          onChange({
+            target: {
+              name: props.name,
+              value: values.value,
+            },
+          });
+        }}
         //perguntar o que fica melhor
         decimalScale={2} 
         fixedDecimalScale={true}

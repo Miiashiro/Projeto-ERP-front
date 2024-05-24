@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { FaEdit } from 'react-icons/fa';
 import api from '../../../api';
 import "./modal.css"
+import { IMaskInput } from 'react-imask';
 
 const style = {
   position: 'absolute',
@@ -16,6 +17,54 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
+const TextMaskTel = React.forwardRef(function TextMaskCustom(props, ref) {
+  const { onChange, ...other } = props;
+  return (
+    <IMaskInput
+      {...other}
+      mask="(00) 0000-0000"
+      /*definitions={{
+        '#': /[1-9]/,
+      }}*/
+      inputRef={ref}
+      onAccept={(value) => onChange({ target: { name: props.name, value } })}
+      overwrite
+    />
+  );
+});
+
+const TextMaskCnpj = React.forwardRef(function TextMaskCustom(props, ref) {
+  const { onChange, ...other } = props;
+  return (
+    <IMaskInput
+      {...other}
+      mask="00.000.000/0000-00"
+      /*definitions={{
+        '#': /[1-9]/,
+      }}*/
+      inputRef={ref}
+      onAccept={(value) => onChange({ target: { name: props.name, value } })}
+      overwrite
+    />
+  );
+});
+
+const TextMaskCep = React.forwardRef(function TextMaskCustom(props, ref) {
+  const { onChange, ...other } = props;
+  return (
+    <IMaskInput
+      {...other}
+      mask="00000-000"
+      /*definitions={{
+        '#': /[1-9]/,
+      }}*/
+      inputRef={ref}
+      onAccept={(value) => onChange({ target: { name: props.name, value } })}
+      overwrite
+    />
+  );
+});
 
 const ModalEdit = ({ params }) => {
 
@@ -83,7 +132,7 @@ const ModalEdit = ({ params }) => {
           <br />
           <div className='modal'>
             {/*Id e Nome*/}
-            <div className='wrap-input-prod'>
+            <div className='wrap-input-group'>
               <TextField className='id' label="Id" disabled
                 value={id} onChange={(e) => setId(e.target.value)}
               />
@@ -93,33 +142,38 @@ const ModalEdit = ({ params }) => {
               />
             </div>
 
-            <div className='wrap-input-a'>
+            <div className='wrap-input-group'>
               <TextField className='email' label="Email" type="email"
                 value={email} onChange={(e) => setEmail(e.target.value)} />
 
               <TextField className='tel' label="Telefone" type="tel"
-                value={tel} onChange={(e) => setTel(e.target.value)} />
+                value={tel} onChange={(e) => setTel(e.target.value)} 
+                InputProps={{
+                  inputComponent: TextMaskTel,
+                }}/>
             </div>
 
-            <div className='wrap-input-c'>
+            <div className='wrap-input-group'>
               <TextField className='cnpj' label="CNPJ" type="text"
-                value={cnpj} onChange={(e) => setCnpj(e.target.value)} />
+                value={cnpj} onChange={(e) => setCnpj(e.target.value)} 
+                InputProps={{
+                  inputComponent: TextMaskCnpj,
+                }}/>
 
               <TextField className="cep" label="CEP" type="text"
-                value={cep} onChange={(e) => setCep(e.target.value)} />
+                value={cep} onChange={(e) => setCep(e.target.value)} 
+                InputProps={{
+                  inputComponent: TextMaskCep,
+                }}/>
             </div>
 
-            <div className='wrap-input-field'>
-              <TextField className='endereco' label="Endereço" type="text"
-                value={address} onChange={(e) => setAddress(e.target.value)} />
-            </div>
+            <TextField className='endereco' label="Endereço" type="text"
+              value={address} onChange={(e) => setAddress(e.target.value)} />
 
-            <div className='wrap-input-field'>
-              <TextField className='bairro' label="Bairro" type="text"
-                value={neighborhood} onChange={(e) => setNbhd(e.target.value)} />
-            </div>
+            <TextField className='bairro' label="Bairro" type="text"
+              value={neighborhood} onChange={(e) => setNbhd(e.target.value)} />
 
-            <div className='wrap-input-local'>
+            <div className='wrap-input-group'>
               <TextField className='cidade' label="Cidade" type="text"
                 value={city} onChange={(e) => setCity(e.target.value)} />
 

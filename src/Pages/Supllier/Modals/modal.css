@@ -14,40 +14,29 @@
     cursor: pointer;
 }
 
-/*Inputs*/
-.wrap-input-field .fornecedor, .wrap-input-field .email, .wrap-input-field .tel, .wrap-input-field .endereco, .wrap-input-field .bairro{
+/*Inputs sozinhos*/
+.modal .forne, .modal .endereco, .modal .bairro{
     width: 100%;
     margin-bottom: 12px;
 }
 
 /*grupo de inputs*/
-.wrap-input-c, .wrap-input-local, .wrap-input-a, .wrap-input-prod{
+.wrap-input-group{
     display: flex;
     justify-content: space-between;
     margin-bottom: 12px;
 }
 
-/*CNPJ e CEP*/
-.wrap-input-c .cnpj, .wrap-input-c .cep{
-    width: 160px;
-}
-
-/*cidade e pais*/
-.wrap-input-local .cidade, .wrap-input-local .pais{
-    width: 160px;
-}
-
-/*email e telefone*/
-.wrap-input-a .email, .wrap-input-a .tel{
+.cnpj, .cep, .cidade, .pais, .email, .tel{
     width: 160px;
 }
 
 /*Id e fornecedor / modalEdit.js*/
-.wrap-input-prod .id{
+.wrap-input-group .id{
     width: 70px;
 }
 
-.wrap-input-prod .fornecedor{
+.wrap-input-group .fornecedor{
     width: 250px;
 }
 
