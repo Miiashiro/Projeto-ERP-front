@@ -2,6 +2,7 @@ import { Box, Modal, TextField } from '@mui/material';
 import React, { useState } from 'react'
 import './modals.css'
 import api from '../../../api';
+import { NumericFormat } from 'react-number-format';
 
 const style = {
   position: 'absolute',
@@ -14,6 +15,34 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
+const NumericFormatCustom = React.forwardRef(
+  function NumericFormatCustom(props, ref) {
+    const { onChange, ...other } = props;
+
+    return (
+      <NumericFormat
+        {...other}
+        getInputRef={ref}
+        onValueChange={(values) => {
+          onChange({
+            target: {
+              name: props.name,
+              value: values.value,
+            },
+          });
+        }}
+        //perguntar o que fica melhor
+        decimalScale={2} 
+        fixedDecimalScale={true}
+
+        thousandSeparator=","
+        allowedDecimalSeparators={['.']}
+        prefix="R$"
+      />
+    );
+  },
+);
 
 const ModalAdd = () => {
 
@@ -46,8 +75,6 @@ const ModalAdd = () => {
       <Modal
         open={open}
         onClose={toggle}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
           <h2>Adicionar Conta</h2>
@@ -59,7 +86,10 @@ const ModalAdd = () => {
               value={bill} onChange={(e) => setBill(e.target.value)}/>
 
             <TextField className='preco' label="Valor" type="number" 
-              value={price} onChange={(e) => setPrice(e.target.value)}/>
+              value={price} onChange={(e) => setPrice(e.target.value)}
+              InputProps={{
+                inputComponent: NumericFormatCustom,
+              }}/>
 
             <TextField className='data' type="date" 
               value={date} onChange={(e) => setDate(e.target.value)}/>

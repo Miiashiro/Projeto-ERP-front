@@ -20,17 +20,17 @@
     margin-bottom: 12px;
 }
 
-/*Margin da caixa dos textos do id e conta / modalEdit.js*/
-.wrap-input-field{
+/*Grupo de inputs / modalEdit.js*/
+.wrap-input-group{
     display: flex;
     justify-content: space-between;
 }
 
-.wrap-input-field .id{
+.wrap-input-group .id{
     width: 70;
 }
 
-.wrap-input-field .conta{
+.wrap-input-group .conta{
     width: 250px;
 }
 
