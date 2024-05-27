@@ -20,6 +20,7 @@ function Bill(){
 
                 <ModalAdd/>
             </LayoutFilter>
+            
             <div className="wrap-table">
                 <Table filter={filter} />
             </div>

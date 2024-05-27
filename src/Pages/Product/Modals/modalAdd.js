@@ -73,7 +73,7 @@ const ModalAdd = () => {
 
   return (
     <>
-      <button className='adicionar' onClick={toggle}>ADICIONAR</button>
+      <button className='buttonOpen' onClick={toggle}>ADICIONAR</button>
 
       <Modal
         open={open}
@@ -100,7 +100,7 @@ const ModalAdd = () => {
                 inputComponent: NumericFormatCustom,
               }} />
 
-            <div className='wrap-input-quant'>
+            <div className='wrap-input-group'>
               <TextField className="quant" label="Quantidade"
                 value={quant} onChange={(e) => setQuant(e.target.value)} />
 

@@ -5,7 +5,8 @@ import Product from "./Pages/Product/product";
 import Login from "./Pages/Start/login";
 import Registration from "./Pages/Start/registration";
 import Fornecedor from "./Pages/Supllier/supllier";
-import Sales from "./Pages/Sales/sales"
+import Sales from "./Pages/Sales/sales";
+import ModalAdd from "./Pages/Sales/PageAddVendas/modalAdd";
 
 function App() {
   return (
@@ -16,8 +17,9 @@ function App() {
         <Route path="/Home" element={<Home/>} />
         <Route path="/Produto" element={<Product/>} />
         <Route path="/Fornecedor" element={<Fornecedor />} />
-        <Route path="/Contas" element={<Bills />} />
+        <Route path="/Conta" element={<Bills />} />
         <Route path="/Venda" element={<Sales />} />
+        <Route path="/Venda/Adicionar" element={<ModalAdd />} />
       </Routes>
     </BrowserRouter>
   );

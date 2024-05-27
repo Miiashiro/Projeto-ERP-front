@@ -1,0 +1,63 @@
+/*botão adicionar / table.jsx*/
+.buttonOpen{
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid rgba(201, 201, 201, 0.712);
+    /*background-color: rgb(255, 255, 255);*/
+    /*box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;*/
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: #ffffffe8;
+}
+
+.buttonOpen:hover{
+    background-color: rgba(119, 136, 153, 0.171);
+    cursor: pointer;
+}
+
+/*Inputs sozinhos*/
+.modal .produto, .modal .desc, .modal .preco{
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+/*grupo de inputs*/
+.wrap-input-groups{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+/*Quantidades / modalEdit.js*/
+.wrap-input-group .quant{
+    width: 100px;
+}
+
+.wrap-input-group .ids{
+    width: 70px;
+}
+
+.wrap-input-group .produtos{
+    width: 250px;
+}
+
+/*Margin dos botoes*/
+.group-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.close, .add, .alter, .delete{
+    border-radius: 4px;
+    font-size: 13px;
+    padding: 5px;
+    color: #fff;
+}
+
+.close{
+    background-color: rgba(255, 0, 0, 0.737);
+}
+
+.add, .alter, .delete{
+    background-color: rgba(12, 65, 238, 0.783);
+}

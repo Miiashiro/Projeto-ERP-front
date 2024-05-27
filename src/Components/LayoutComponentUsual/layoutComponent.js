@@ -7,7 +7,7 @@ const layoutComponent = ({title, children}) => {
     <div className="container-prod">
             <SideBar />
             <main>
-                <span>{title}</span>
+                <span className='title'>{title}</span>
 
                 <div className="content">
                     <div className="wrap">

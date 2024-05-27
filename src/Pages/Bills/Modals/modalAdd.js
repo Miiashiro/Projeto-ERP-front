@@ -70,7 +70,7 @@ const ModalAdd = () => {
 
   return (
     <div>
-      <button className='adicionar' onClick={toggle}>ADICIONAR</button>
+      <button className='buttonOpen' onClick={toggle}>ADICIONAR</button>
 
       <Modal
         open={open}

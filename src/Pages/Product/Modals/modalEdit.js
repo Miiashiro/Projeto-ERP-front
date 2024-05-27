@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { FaEdit } from "react-icons/fa";
 import api from "../../../api"
 import { NumericFormat } from 'react-number-format';
+import "./modal.css"
 
 const style = {
   position: 'absolute',
@@ -106,11 +107,11 @@ const EditModal = ({ params }) => {
             
             {/*Id e Nome*/}
             <div className='wrap-input-group'>
-              <TextField className="id" label="Id" disabled
+              <TextField className="ids" label="Id" disabled
                 value={id} onChange={(e) => setId(e.target.value)}
               />
 
-              <TextField className="produto" label="Produto"
+              <TextField className="produtos" label="Produto"
                 value={name} onChange={(e) => setName(e.target.value)}
               />
             </div>
@@ -129,7 +130,7 @@ const EditModal = ({ params }) => {
             />
 
             {/*Quantidades*/}
-            <div className='wrap-input-quant'>
+            <div className='wrap-input-group'>
               <TextField className="quant" label="Quantidade"
                 value={quant} onChange={(e) => setQuant(e.target.value)}
               />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaBox, FaHome, FaTruck, FaWpforms } from "react-icons/fa";
+import { FaBox, FaChartLine, FaHome, FaTruck, FaWpforms } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import "./sidebar.css"
 
@@ -23,9 +23,14 @@ const Sidebar = ({ children }) => {
             icon: <FaTruck />
         },
         {
-            path: "/Contas",
+            path: "/Conta",
             name: "Contas a Pagar",
             icon: <FaWpforms />
+        },
+        {
+            path: "/Venda",
+            name: "Venda",
+            icon: <FaChartLine />
         }
     ]
 

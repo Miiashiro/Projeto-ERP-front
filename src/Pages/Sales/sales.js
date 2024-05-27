@@ -1,31 +1,25 @@
 import React, { useState } from "react";
-import LayoutFilter from "../../Components/LayoutFilter/layoutFilter";
-import LayoutComponent from "../../Components/LayoutComponentUsual/layoutComponent";
 import { FaSearch } from "react-icons/fa";
-import Table from "../Product/Table/table";
-import ModalAdd from "../Product/Modals/modalAdd";
-import "./sales.css"
-
-function Product() {
-
+import LayoutComponent from "../../Components/LayoutComponentUsual/layoutComponent";
+import LayoutFilter from "../../Components/LayoutFilter/layoutFilter";
+function Sale() {
+    
     const [filter, setFilter] = useState("")
 
-    return (
-        <LayoutComponent title="Produto">
+    return(
+        <LayoutComponent title="Venda">
             <LayoutFilter>
                 <div className="wrap-search">
-                    <input type="search" value={filter} onChange={(e) => setFilter(e.target.value)}/>
+                    <input type="search" value={filter} onChange={(e) => setFilter(e.target.value)} />
                     <FaSearch className="icon-search" />
                 </div>
 
-                <ModalAdd />
+                <button>Adicionar</button>
             </LayoutFilter>
-            
-            <div className="space">
-              <Table filter={filter}/>
-            </div>
+
+            opaaaaa
         </LayoutComponent>
     )
 }
 
-export default Product
+export default Sale

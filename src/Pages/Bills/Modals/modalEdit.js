@@ -101,7 +101,7 @@ const ModalEdit = ({params}) => {
 
                         {/*Id e conta */}
                         <div className='wrap-input-group'>
-                            <TextField className='id' label="Id" disabled
+                            <TextField className='id' label="Id" disabled type="number"
                                 value={id} onChange={(e) => setId(e.target.value)} />
 
                             <TextField className='conta' label="Conta" type="text"
@@ -109,7 +109,7 @@ const ModalEdit = ({params}) => {
                         </div>
 
                         {/*Preço */}
-                        <TextField className='preco' label="Valor" type="number"
+                        <TextField className='preco' label="Valor"
                             value={price} onChange={(e) => setPrice(e.target.value)} 
                             InputProps={{
                                 inputComponent: NumericFormatCustom,
