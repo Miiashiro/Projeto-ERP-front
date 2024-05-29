@@ -4,11 +4,26 @@ import React from 'react'
 import { useState } from 'react'
 import LayoutComponent from '../../../Components/LayoutComponentUsual/layoutComponent'
 import "./addVenda.css"
+import api from "../../../api"
 
 const AddVenda = () => {
 
-  const [name, setName] = useState("")
+  const [id_prod, setIdProd] = useState("")
   const [quant, setQuant] = useState("")
+  const [dateSale, setDateSale] = useState("")
+
+  async function addSale() {
+    try {
+      const data = {
+        id_prod, quant, dateSale
+      }
+
+      await api.post('/venda', data)
+      alert("Venda cadastrada")
+    }catch(error){
+      alert(`Erro ao cadastrar venda. Erro ${error}`)
+    }
+  }
 
   return (
     <LayoutComponent title="Vendas em Aberto">
@@ -16,7 +31,7 @@ const AddVenda = () => {
         <div className='container-items'>
           <div className='wrap-table-venda'>
             <TableContainer>
-              <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+              <Table sx={{ maxWidth: 650 }} size="small" aria-label="a dense table">
                 <TableHead>
                   <TableRow>
                     <TableCell>ID</TableCell>
@@ -32,18 +47,21 @@ const AddVenda = () => {
           <div className='nsei'>
             <div className='inputs'>
               <div className='wrap-input-venda'>
-              <TextField type="text" label="Nome" variant="standard" className='standart'/>
+                <TextField type="text" label="Nome" variant="standard" className='standart'
+                  value={id_prod} onChange={(e) => setIdProd(e.target.value)} />
               </div>
 
               <div className='wrap-input-venda'>
-                <TextField type="number" label="Quantidade" variant="standard" className='standart'/>
+                <TextField type="number" label="Quantidade" variant="standard" className='standart'
+                  value={quant} onChange={(e) => setQuant(e.target.value)} />
               </div>
 
               <div className='wrap-input-venda'>
-                <TextField type="date" variant="standard" className='data'/>
+                <TextField type="date" variant="standard" className='data'
+                  value={dateSale} onChange={(e) => setDateSale(e.target.value)} />
               </div>
 
-              <button className='adicionar'>Adicionar</button>
+              <button className='adicionar' onClick={addSale}>Adicionar</button>
             </div>
 
             <button className='salvar'>Salvar</button>
