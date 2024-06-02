@@ -1,0 +1,19 @@
+.container-venda{
+    background-color: rgb(238, 238, 238);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px;
+}
+
+.container-items{
+    display: flex;
+    justify-content: space-around;
+}
+
+.contador{
+    width: 100%;
+    background-color: #fff;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}

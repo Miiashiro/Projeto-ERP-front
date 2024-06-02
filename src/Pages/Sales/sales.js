@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import LayoutComponent from "../../Components/LayoutComponentUsual/layoutComponent";
 import LayoutFilter from "../../Components/LayoutFilter/layoutFilter";
+import Table from "./Table/table";
 function Sale() {
-    
+
     const [filter, setFilter] = useState("")
 
-    return(
+    return (
         <LayoutComponent title="Venda">
             <LayoutFilter>
                 <div className="wrap-search">
@@ -14,10 +15,12 @@ function Sale() {
                     <FaSearch className="icon-search" />
                 </div>
 
-                <button>Adicionar</button>
+                <button className="buttonOpen">Adicionar</button>
             </LayoutFilter>
-
-            opaaaaa
+            
+            <div className="wrap-table">
+                <Table filter={filter} />
+            </div>
         </LayoutComponent>
     )
 }

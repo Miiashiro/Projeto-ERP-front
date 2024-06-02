@@ -6,7 +6,7 @@ import Login from "./Pages/Start/login";
 import Registration from "./Pages/Start/registration";
 import Fornecedor from "./Pages/Supllier/supllier";
 import Sales from "./Pages/Sales/sales";
-import ModalAdd from "./Pages/Sales/PageAddVendas/modalAdd";
+import ModalAdd from "./Pages/Sales/PageAdd/pageAdd";
 
 function App() {
   return (
