@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 import LayoutComponent from "../../Components/LayoutComponentUsual/layoutComponent";
 import LayoutFilter from "../../Components/LayoutFilter/layoutFilter";
 import Table from "./Table/table";
@@ -15,7 +16,9 @@ function Sale() {
                     <FaSearch className="icon-search" />
                 </div>
 
-                <button className="buttonOpen">Adicionar</button>
+                <NavLink to="/Venda/Adicionar">
+                    <button className="buttonOpen">ADICIONAR</button>
+                </NavLink>
             </LayoutFilter>
             
             <div className="wrap-table">

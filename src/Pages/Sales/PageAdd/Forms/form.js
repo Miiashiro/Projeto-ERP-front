@@ -15,11 +15,12 @@ function Form(){
             id_prod, quant, dateSale
           }
     
-          await api.post('/venda/adicionar', data)
+          await api.post('/lista/adicionar', data)
     
           setIdProd("")
           setQuant("")
           setDateSale("")
+          
         }catch(error){
           alert(`Erro ao cadastrar venda. Erro ${error}`)
         }
@@ -27,8 +28,8 @@ function Form(){
     
       async function save(){
         try{
-          await api.post('/venda/salvar')
-          await api.delete('/venda/lista')
+          await api.post('/lista/salvar')
+          await api.delete('/lista/lista')
     
           alert("Salvo com sucesso")
         }catch(error){

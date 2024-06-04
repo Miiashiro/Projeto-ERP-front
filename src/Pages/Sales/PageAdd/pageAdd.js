@@ -3,11 +3,9 @@ import LayoutComponent from '../../../Components/LayoutComponentUsual/layoutComp
 import "./addVenda.css"
 import TableAddVenda from './Table/tableAdd'
 import Form from './Forms/form'
+import Contador from './Contador/contador'
 
 const AddVenda = () => {
-
-
-
   return (
     <LayoutComponent title="Vendas em Aberto">
       <div className='container-venda'>
@@ -16,9 +14,8 @@ const AddVenda = () => {
 
           <Form /> 
         </div>
-        <div className='contador'>
-          o
-        </div>
+        
+        <Contador />
       </div>
     </LayoutComponent>
   )

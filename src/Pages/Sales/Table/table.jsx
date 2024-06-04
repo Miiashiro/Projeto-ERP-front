@@ -4,13 +4,30 @@ import { useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import api from "../../../api";
 import moment from "moment/moment";
+import ModalEdit from "../Modals/modalEdit";
+import ModalDelete from "../Modals/modalDelete";
 
 export default function Table({filter}){
     const [data, setData] = useState([])
 
     async function getData(){
-        const { data } = await api.get('/venda')
-        setData(data)
+        try{
+            const { data } = await api.get('/venda')
+            setData(data)
+
+        } catch(error){
+            const falseData = [
+                {
+                  id_sale: "",
+                  product_name: "",
+                  quantidade: "",    
+                  price: "",
+                  total: "",
+                  date_sale: ""
+                }
+              ]
+              setData(falseData)
+        }
     }
 
     useEffect(() => {
@@ -23,7 +40,19 @@ export default function Table({filter}){
         {field: "quant", headerName: "Quantidade", width: 130},
         {field: "preco", headerName: "Preço", width: 130},
         {field: "total", headerName: "Valor Total", width: 160},
-        {field: "data", headerName: "Data", width: 130}
+        {field: "data", headerName: "Data", width: 130},
+        {
+            field: 'actions',
+            type: 'actions',
+            width: 80,
+            getActions: (params) => [
+                <>
+                    <ModalEdit params={params}/>
+
+                    <ModalDelete params={params}/>
+                </>
+            ] 
+        }
     ] 
 
     const initialRows = data.map((row) => (

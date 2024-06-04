@@ -8,12 +8,3 @@
     display: flex;
     justify-content: space-around;
 }
-
-.contador{
-    width: 100%;
-    background-color: #fff;
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-}

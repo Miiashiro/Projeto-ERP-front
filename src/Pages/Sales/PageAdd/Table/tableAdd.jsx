@@ -8,14 +8,40 @@ import api from '../../../../api';
 export default function TableAddVenda() {
 
   const [data, setData] = useState([])
-  
+
   useEffect(() => {
     async function getSale() {
-      const { data } = await api.get('/venda/lista')
-      setData(data)
+      try{
+        const { data } = await api.get('/lista')
+        setData(data)
+      } catch(error){
+        const falseData = [
+          {
+            id_sale: "",
+            product_name: "",
+            quantidade: "",    
+            price: "",
+            total: "",
+            date_sale: ""
+          }
+        ]
+        setData(falseData)
+      }
     }
     getSale()
   }, [data])
+  
+  async function deleteSale(venda){
+    try{
+      const id = venda.id_sale
+      
+      await api.delete(`/lista/${id}`)
+
+      alert("Venda deletada com sucesso")
+    }catch(error){
+      alert(`Erro ao deletar a venda. Erro ${error}`)
+    }
+  }
 
   return (
     <div className='wrap-table-venda'>
@@ -57,7 +83,7 @@ export default function TableAddVenda() {
                   {moment(venda.date_sale).format("DD/MM/YYYY")}
                 </TableCell>
                 <TableCell>
-                  <FaTrash />
+                  <FaTrash onClick={() => deleteSale(venda)}/>
                 </TableCell>
               </TableRow>
             ))}

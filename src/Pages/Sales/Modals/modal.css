@@ -1,0 +1,40 @@
+.wrap-input-group{
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrap-input-group .id{
+    width: 70px;
+
+}
+
+.wrap-input-group .prod{
+    width: 250px;
+
+}
+
+.wrap-input-group .field{
+    width: 160px;
+}
+
+/*Margin dos botoes*/
+.group-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.close, .alter, .delete{
+    border-radius: 4px;
+    font-size: 13px;
+    padding: 5px;
+    color: #fff;
+}
+
+.close{
+    background-color: rgba(255, 0, 0, 0.737);
+}
+
+.add, .alter, .delete{
+    background-color: rgba(12, 65, 238, 0.783);
+}
