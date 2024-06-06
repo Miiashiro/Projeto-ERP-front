@@ -1,14 +1,29 @@
 import React from "react";
-import Sidebar from "../../Components/SideBar/sidebar";
+import LayoutComponent from "../../Components/LayoutComponentUsual/layoutComponent";
+import BarChart from "./Grafics/barChart";
+import LineCharts from "./Grafics/lineChart";
+import PieCharts from "./Grafics/pieChart";
+import "./home.css"
 
 function Home(){
     return(
-        <div className="container-prods">
-            <Sidebar />
-            <div className="main">
-                olaaaaa
+        <LayoutComponent title="Home">
+            <div className="wrap-charts">
+                <div className="lineChart">
+                    <LineCharts />
+                </div>
+
+                <div className="small-charts">
+                    <div className="pie-chart">
+                        <PieCharts />
+                    </div>
+
+                    <div className="bar-chart">
+                        <BarChart />
+                    </div>
+                </div>
             </div>
-        </div>
+        </LayoutComponent>
     )
 }
 

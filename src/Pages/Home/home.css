@@ -1,0 +1,13 @@
+.wrap-charts{
+    background-color: rgb(220, 220, 220);
+    padding: 10px;
+}
+
+.lineChart, .pie-chart, .bar-chart{
+    background-color: #fff;
+}
+
+.small-charts{
+    display: flex;
+    margin-top: 10px;
+}
