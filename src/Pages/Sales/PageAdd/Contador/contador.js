@@ -8,21 +8,26 @@ function Contador() {
     useEffect(() => {
         async function getSale() {
             try {
-                const { data } = await api.get('/venda/lista')
-                setData(data)
+                const { data } = await api.get('/lista')
+
+                if(data > 0){
+                    setData(data)
+                } else {
+                    const falseData = [
+                        {
+                            id_sale: "",
+                            product_name: "",
+                            quantidade: "",
+                            price: "",
+                            total: "",
+                            date_sale: ""
+                        }
+                    ]
+                    setData(falseData)
+                }
+
             } catch (error) {
-                const sla = [
-                    {
-                        id_sale: "",
-                        product_name: "",
-                        quantidade: "",
-                        price: "",
-                        total: "",
-                        date_sale: ""
-                    }
-                ]
-                setData(sla)
-                console.log(error)
+                alert(`Erro ${error}`)
             }
         }
         getSale()

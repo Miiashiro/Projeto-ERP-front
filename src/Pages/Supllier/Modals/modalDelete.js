@@ -34,7 +34,7 @@ const ModalDelete = ({params}) => {
     try{
       await api.delete(`/fornecedor/${id}`)
 
-      alert("Produto deletado!")
+      alert("Fornecedor deletado!")
 
       window.location.reload()
     }catch(error){

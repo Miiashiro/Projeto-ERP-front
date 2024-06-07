@@ -24,6 +24,8 @@ function Login() {
             alert(`algo deu errado. Erro: ${error}, revize os campos.`)
         }
     }
+
+    console.log(email)
     return (
         <LayoutComponent title="Login">
             <form>

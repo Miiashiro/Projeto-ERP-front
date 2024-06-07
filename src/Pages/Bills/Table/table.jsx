@@ -5,15 +5,27 @@ import moment from "moment/moment";
 import ModalEdit from "../Modals/modalEdit";
 import ModalDelete from "../Modals/modalDelete";
 
-export default function Table({filter}){
+export default function Table({ filter }) {
 
     //Atributo
     const [data, setData] = useState([])
 
     //Método get
-    async function getData(){
+    async function getData() {
         const { data } = await api.get('/conta')
-        setData(data)
+        if (data == 0) {
+            const falseData = [
+                {
+                    id: "",
+                    conta: "",
+                    preco: "",
+                    data: ""
+                }
+            ]
+            setData(falseData)
+        } else {
+            setData(data)
+        }
     }
 
     useEffect(() => {
@@ -21,25 +33,25 @@ export default function Table({filter}){
     }, [])
 
     //Colunas
-    const columns=[
-        {field: "id", headerName: "Id", width: 100},
-        {field: "conta", headerName: "Conta", width: 210},
-        {field: "preco", headerName: "Preço", width: 180},
-        {field: "data", headerName: "Data Vencimento", width: 180},
+    const columns = [
+        { field: "id", headerName: "Id", width: 100 },
+        { field: "conta", headerName: "Conta", width: 210 },
+        { field: "preco", headerName: "Preço", width: 180 },
+        { field: "data", headerName: "Data Vencimento", width: 180 },
         {
             field: "actions",
             type: "actions",
             width: 80,
             getActions: (params) => [
                 <>
-                    <ModalEdit params={params}/>
+                    <ModalEdit params={params} />
 
-                    <ModalDelete params={params}/>
+                    <ModalDelete params={params} />
                 </>
             ]
         }
     ]
-    
+
     //Linha
     const initialRows = data.map((row) => (
         {
@@ -53,18 +65,18 @@ export default function Table({filter}){
     //Filtro de busca
     const contaFiltrada = initialRows.filter((row) => {
         const lowerSearch = filter.toLowerCase()
-        return row.conta.toString().toLowerCase().includes(lowerSearch)
+        return row.conta?.toString().toLowerCase().includes(lowerSearch)
     })
 
-    return(
+    return (
         <div className="table">
             <DataGrid columns={columns}
-            rows={contaFiltrada}
-            initialState={{
-                ...initialRows.initialState,
-                pagination: { paginationModel: { pageSize: 5 } },
-            }}
-            pageSizeOptions={[5, 10, 25, 50]} />
+                rows={contaFiltrada}
+                initialState={{
+                    ...initialRows.initialState,
+                    pagination: { paginationModel: { pageSize: 5 } },
+                }}
+                pageSizeOptions={[5, 10, 25, 50]} />
         </div>
     )
 }

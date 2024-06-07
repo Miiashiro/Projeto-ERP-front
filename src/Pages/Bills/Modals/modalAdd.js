@@ -85,7 +85,7 @@ const ModalAdd = () => {
             <TextField className='conta' label="Conta" type="text"
               value={bill} onChange={(e) => setBill(e.target.value)}/>
 
-            <TextField className='preco' label="Valor" type="number" 
+            <TextField className='preco' label="Valor" 
               value={price} onChange={(e) => setPrice(e.target.value)}
               InputProps={{
                 inputComponent: NumericFormatCustom,

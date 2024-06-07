@@ -5,38 +5,56 @@ import ModalEdit from "../Modals/modalEdit";
 import ModalDelete from "../Modals/modalDelete";
 import "../supllier.css"
 
-export default function Table({filter}){
+export default function Table({ filter }) {
     const [data, setData] = useState([])
 
-    async function getData(){
-        const {data} = await api.get('/fornecedor')
-        setData(data)
+    async function getData() {
+        const { data } = await api.get('/fornecedor')
+        if (data > 0) {
+            setData(data)
+        } else {
+            const falseData = [
+                {
+                    id: "",
+                    fornecedor: "",
+                    email: "",
+                    telefone: "",
+                    cnpj: "",
+                    cep: "",
+                    endereco: "",
+                    bairro: "",
+                    cidade: "",
+                    pais: "",
+                }
+            ]
+            setData(falseData)
+        }
     }
 
     useEffect(() => {
         getData()
     }, [])
-    
-    const columns=[
-        {field: "id", headerName: "ID", width: 90},
-        {field: "fornecedor", headerName: "Fornecedor", width: 180},
-        {field: "email", headerName: "Email", width: 180},
-        {field: "telefone", headerName: "Telefone", width: 110},
-        {field: "cnpj", headerName: "CNPJ", width: 100},
-        {field: "cep", headerName: "Cep", width: 100},
-        {field: "endereco", headerName: "Endereço", width: 200},
-        {field: "bairro", headerName: "Bairro", width: 120},
-        {field: "cidade", headerName: "Cidade", width: 120},
-        {field: "pais", headerName: "País", width: 100},
+
+    const columns = [
+        { field: "id", headerName: "ID", width: 90 },
+        { field: "fornecedor", headerName: "Fornecedor", width: 180 },
+        { field: "email", headerName: "Email", width: 180 },
+        { field: "telefone", headerName: "Telefone", width: 110 },
+        { field: "cnpj", headerName: "CNPJ", width: 100 },
+        { field: "cep", headerName: "Cep", width: 100 },
+        { field: "endereco", headerName: "Endereço", width: 200 },
+        { field: "bairro", headerName: "Bairro", width: 120 },
+        { field: "cidade", headerName: "Cidade", width: 120 },
+        { field: "pais", headerName: "País", width: 100 },
         {
             field: "actions",
             type: "actions",
             width: 80,
             getActions: (params) => [
                 <>
-                    <ModalEdit params={params}/>
+                    <ModalEdit params={params} />
 
-                    <ModalDelete params={params}/>
+                    <ModalDelete params={params} />
                 </>
             ]
         }
@@ -59,18 +77,18 @@ export default function Table({filter}){
 
     const forneFiltrado = initialRows.filter((row) => {
         const lowerSearch = filter.toLowerCase()
-        return row.fornecedor.toString().toLowerCase().includes(lowerSearch)
+        return row.fornecedor?.toString().toLowerCase().includes(lowerSearch)
     })
 
-    return(
+    return (
         <div className="table">
             <DataGrid columns={columns}
-            rows={forneFiltrado}
-            initialState={{
-                ...initialRows.initialState,
-                pagination: { paginationModel: { pageSize: 5 } },
-            }}
-            pageSizeOptions={[5, 10, 25, 50]} />
+                rows={forneFiltrado}
+                initialState={{
+                    ...initialRows.initialState,
+                    pagination: { paginationModel: { pageSize: 5 } },
+                }}
+                pageSizeOptions={[5, 10, 25, 50]} />
         </div>
     )
 }
