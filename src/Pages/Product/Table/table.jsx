@@ -31,7 +31,6 @@ export default function Table({ filter }) {
 
             setData(falseData)
         }
-
     }
 
     useEffect(() => {

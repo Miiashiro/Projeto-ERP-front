@@ -1,13 +1,34 @@
 .wrap-charts{
-    background-color: rgb(220, 220, 220);
+    background-color: rgb(238, 238, 238);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
     padding: 10px;
+    height: 650px;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .lineChart, .pie-chart, .bar-chart{
     background-color: #fff;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }
 
 .small-charts{
     display: flex;
     margin-top: 10px;
+    justify-content: space-between;
+}
+
+.pie-chart, .bar-chart{
+    width: 650px;
+}
+
+.pie-chart{
+    padding-top: 10px;
+}
+
+.pie-chart span{
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 15px;
+    margin-left: 15px;
+    font-size: 25px;
 }

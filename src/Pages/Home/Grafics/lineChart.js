@@ -22,25 +22,24 @@ const LineCharts = () => {
       valor: row.resultado
     }
   ))
-
   return (
     <>
-
       <Card>
         <CardContent>
           <Typography variant="h5" component="div">
             Valor Meses
           </Typography>
           <ResponsiveContainer width="100%" height={400}>
-            <LineChart
-              data={data}
-              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="meses" />
-              <YAxis />
-              <Line type="monotone" dataKey="valor" stroke="#8884d8" activeDot={{ r: 8 }} />
-            </LineChart>
+          <LineChart
+            data={data}
+            margin={{ top: 5, right: 20, left: 5}}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="meses" />
+            <YAxis />
+            <Tooltip />
+            <Line type="monotone" dataKey="valor" stroke="#8884d8" activeDot={{ r: 8 }} />
+          </LineChart>
           </ResponsiveContainer>
         </CardContent>
       </Card>

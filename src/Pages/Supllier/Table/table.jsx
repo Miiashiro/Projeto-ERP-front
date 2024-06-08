@@ -10,7 +10,7 @@ export default function Table({ filter }) {
 
     async function getData() {
         const { data } = await api.get('/fornecedor')
-        if (data > 0) {
+        if (data.length >= 1) {
             setData(data)
         } else {
             const falseData = [
@@ -34,6 +34,8 @@ export default function Table({ filter }) {
     useEffect(() => {
         getData()
     }, [])
+
+    console.log(data)
 
     const columns = [
         { field: "id", headerName: "ID", width: 90 },

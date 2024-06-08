@@ -31,8 +31,8 @@ const PieCharts = () => {
           faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
         },
       ]}
-      height={200}
-      width={700}
+      height={250}
+      width={650}
     />
     )
 }

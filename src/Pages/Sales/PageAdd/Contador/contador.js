@@ -10,9 +10,7 @@ function Contador() {
             try {
                 const { data } = await api.get('/lista')
 
-                if(data > 0){
-                    setData(data)
-                } else {
+                if(data == 0){
                     const falseData = [
                         {
                             id_sale: "",
@@ -24,6 +22,8 @@ function Contador() {
                         }
                     ]
                     setData(falseData)
+                } else {
+                    setData(data)
                 }
 
             } catch (error) {
