@@ -1,6 +1,6 @@
-import { Box, Modal, TextField } from '@mui/material'
+import { Box, Modal, TextField, Autocomplete } from '@mui/material'
 import { GridActionsCellItem } from '@mui/x-data-grid'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaEdit } from 'react-icons/fa'
 import api from '../../../api'
 import "./modal.css"
@@ -18,6 +18,8 @@ const style = {
 };
 
 const ModalEdit = ({params}) => {
+
+    const [data, setData] = useState([])
     const [open, setOpen] = useState(false)
     const [id, setId] = useState("")
     const [prod, setProd] = useState("")
@@ -25,6 +27,15 @@ const ModalEdit = ({params}) => {
     const [price, setPrice] = useState("")
     const [vlrTotal, setVlrTotal] = useState("")
     const [date, setDate] = useState("")
+
+    async function getData(){
+        const {data} = await api.get('/produto')
+        setData(data)
+      }
+  
+      useEffect(() => {
+        getData()
+      }, [])
 
     const toggle = () => setOpen(!open)
 
@@ -53,6 +64,12 @@ const ModalEdit = ({params}) => {
         }
     }
 
+    const autoComplete = data.map((row) => (
+        {
+          label: row.product_name
+        }
+      ))
+
     return (
         <>
             <GridActionsCellItem
@@ -73,7 +90,9 @@ const ModalEdit = ({params}) => {
                             <TextField label="Id" className='id' disabled 
                              value={id} onChange={(e) => setId(e.target.value)}/>
 
-                            <TextField label="Produto" className='prod'
+                            <Autocomplete disablePortal options={autoComplete}
+                             renderInput={(params) => <TextField {...params} label="Produto"/>}
+                             className='prod'
                              value={prod} onChange={(e) => setProd(e.target.value)}/>
                         </div>
 

@@ -65,7 +65,7 @@ function Form(){
             <div className='inputs'>
               <div className='wrap-input-venda'>
                 <Autocomplete disablePortal options={autoComplete}
-                  renderInput={(params) => <TextField {...params} label="Movie" variant="standard" />} 
+                  renderInput={(params) => <TextField {...params} label="Produto" variant="standard" />} 
                   className='standart'
                   value={id_prod} onChange={(e) => setIdProd(e.target.value)}/>
               </div>
