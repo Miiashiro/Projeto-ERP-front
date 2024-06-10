@@ -15,7 +15,6 @@ function Home(){
 
                 <div className="small-charts">
                     <div className="pie-chart">
-                        <span>Contas a Pagar</span>
                         <PieCharts />
                     </div>
 

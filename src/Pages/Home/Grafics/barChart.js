@@ -20,7 +20,7 @@ const BarCharts = () => {
 
   const uData = data.map((row) => (
     {
-      prod: row.id_prod_fk,
+      prod: row.product,
       total: row.total
     }
   ))

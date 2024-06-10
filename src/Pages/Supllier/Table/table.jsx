@@ -10,7 +10,7 @@ export default function Table({ filter }) {
 
     async function getData() {
         const { data } = await api.get('/fornecedor')
-        if (data.length >= 1) {
+        if (data.length > 0) {
             setData(data)
         } else {
             const falseData = [
@@ -41,8 +41,8 @@ export default function Table({ filter }) {
         { field: "id", headerName: "ID", width: 90 },
         { field: "fornecedor", headerName: "Fornecedor", width: 180 },
         { field: "email", headerName: "Email", width: 180 },
-        { field: "telefone", headerName: "Telefone", width: 110 },
-        { field: "cnpj", headerName: "CNPJ", width: 100 },
+        { field: "telefone", headerName: "Telefone", width: 120 },
+        { field: "cnpj", headerName: "CNPJ", width: 110 },
         { field: "cep", headerName: "Cep", width: 100 },
         { field: "endereco", headerName: "Endereço", width: 200 },
         { field: "bairro", headerName: "Bairro", width: 120 },

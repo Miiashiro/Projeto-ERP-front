@@ -13,19 +13,24 @@ export default function TableAddVenda() {
     async function getSale() {
       try{
         const { data } = await api.get('/lista')
-        setData(data)
+        
+        if(data.length > 0){
+          setData(data)
+        } else{
+          const falseData = [
+            {
+              id_sale: "",
+              product_name: "",
+              quantidade: "",    
+              price: "",
+              total: "",
+              date_sale: ""
+            }
+          ]
+          setData(falseData)   
+        }
       } catch(error){
-        const falseData = [
-          {
-            id_sale: "",
-            product_name: "",
-            quantidade: "",    
-            price: "",
-            total: "",
-            date_sale: ""
-          }
-        ]
-        setData(falseData)
+        console.log(`Eror ao encontrar dados ${error}`)
       }
     }
     getSale()
@@ -36,8 +41,7 @@ export default function TableAddVenda() {
       const id = venda.id_sale
       
       await api.delete(`/lista/${id}`)
-
-      alert("Venda deletada com sucesso")
+      
     }catch(error){
       alert(`Erro ao deletar a venda. Erro ${error}`)
     }

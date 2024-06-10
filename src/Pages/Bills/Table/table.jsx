@@ -13,7 +13,9 @@ export default function Table({ filter }) {
     //Método get
     async function getData() {
         const { data } = await api.get('/conta')
-        if (data == 0) {
+        if (data.length > 0) {
+            setData(data)
+        } else {
             const falseData = [
                 {
                     id: "",
@@ -23,8 +25,6 @@ export default function Table({ filter }) {
                 }
             ]
             setData(falseData)
-        } else {
-            setData(data)
         }
     }
 

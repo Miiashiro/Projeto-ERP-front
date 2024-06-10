@@ -14,7 +14,7 @@ export default function Table({ filter }) {
     async function getData() {
         const { data } = await api.get('/produto')
 
-        if (data > 0) {
+        if (data.length > 0) {
             setData(data)
         } else {
             const falseData = [
