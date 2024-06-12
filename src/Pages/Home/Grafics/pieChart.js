@@ -42,7 +42,6 @@ const PieCharts = () => {
             height={250}
             width={650}
           />
-
         </ResponsiveContainer>
       </CardContent>
     </Card>

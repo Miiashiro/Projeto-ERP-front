@@ -2,67 +2,8 @@ import { Box, Modal, TextField } from '@mui/material';
 import React, { useState } from 'react'
 import api from '../../../api';
 import "./modal.css"
-import { IMaskInput } from 'react-imask';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
-const TextMaskTel = React.forwardRef(function TextMaskCustom(props, ref) {
-  const { onChange, ...other } = props;
-  return (
-    <IMaskInput
-      {...other}
-      mask="(00)0000-0000"
-      /*definitions={{
-        '#': /[1-9]/,
-      }}*/
-      inputRef={ref}
-      onAccept={(value) => onChange({ target: { name: props.name, value } })}
-      overwrite
-    />
-  );
-});
-
-const TextMaskCnpj = React.forwardRef(function TextMaskCustom(props, ref) {
-  const { onChange, ...other } = props;
-  return (
-    <IMaskInput
-      {...other}
-      mask="00.000.000/0000-00"
-      /*definitions={{
-        '#': /[1-9]/,
-      }}*/
-      inputRef={ref}
-      onAccept={(value) => onChange({ target: { name: props.name, value } })}
-      overwrite
-    />
-  );
-});
-
-const TextMaskCep = React.forwardRef(function TextMaskCustom(props, ref) {
-  const { onChange, ...other } = props;
-  return (
-    <IMaskInput
-      {...other}
-      mask="00000-000"
-      /*definitions={{
-        '#': /[1-9]/,
-      }}*/
-      inputRef={ref}
-      onAccept={(value) => onChange({ target: { name: props.name, value } })}
-      overwrite
-    />
-  );
-});
+import mask from "./mask.js"
+import axios from 'axios';
 
 const ModalAdd = () => {
 
@@ -75,14 +16,15 @@ const ModalAdd = () => {
   const [address, setAddress] = useState("")
   const [neighborhood, setNeighborhood] = useState("")
   const [city, setCity] = useState("")
-  const [country, setCountry] = useState("")
+  const [state, setState] = useState("")
 
   const toggle = () => setOpen(!open)
 
+  //Adicionar fornecedor
   async function addSupllier() {
     try {
       const data = {
-        supllier, email, tel, cnpj, cep, address, neighborhood, city, country
+        supllier, email, tel, cnpj, cep, address, neighborhood, city, state
       }
 
       await api.post('/fornecedor', data)
@@ -95,8 +37,22 @@ const ModalAdd = () => {
     }
   }
 
+  //Api de cep
+  async function ckeckCep(){
+    try{
+      const {data} = await axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+      setAddress(data.logradouro)
+      setNeighborhood(data.bairro)
+      setCity(data.localidade)
+      setState(data.uf)
+
+    }catch(error){
+      console.log(error)
+    }
+  }
+
   return (
-    <div>
+    <>
       <button className='buttonOpen' onClick={toggle}>ADICIONAR</button>
 
       <Modal
@@ -105,7 +61,7 @@ const ModalAdd = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={mask.style}>
           <h2>Adicionar Fornecedor</h2>
           <hr />
           <br />
@@ -120,7 +76,7 @@ const ModalAdd = () => {
               <TextField className='tel' label="Telefone" type="tel"
                 value={tel} onChange={(e) => setTel(e.target.value)} 
                 InputProps={{
-                  inputComponent: TextMaskTel,
+                  inputComponent: mask.TextMaskTel,
                 }}/>
             </div>
 
@@ -128,13 +84,14 @@ const ModalAdd = () => {
               <TextField className='cnpj' label="CNPJ" type="text"
                 value={cnpj} onChange={(e) => setCnpj(e.target.value)} 
                 InputProps={{
-                  inputComponent: TextMaskCnpj,
+                  inputComponent: mask.TextMaskCnpj,
                 }}/>
 
               <TextField className="cep" label="CEP" type="text"
-                value={cep} onChange={(e) => setCep(e.target.value)} 
+                value={cep} onChange={(e) => setCep(e.target.value)}
+                onBlur={ckeckCep} 
                 InputProps={{
-                  inputComponent: TextMaskCep,
+                  inputComponent: mask.TextMaskCep,
                 }}/>
             </div>
 
@@ -149,7 +106,7 @@ const ModalAdd = () => {
                 value={city} onChange={(e) => setCity(e.target.value)} />
 
               <TextField className="pais" label="País" type="text"
-                value={country} onChange={(e) => setCountry(e.target.value)} />
+                value={state} onChange={(e) => setState(e.target.value)} />
             </div>
 
             <div className='group-buttons'>
@@ -160,7 +117,7 @@ const ModalAdd = () => {
           </div>
         </Box>
       </Modal>
-    </div>
+    </>
   )
 }
 

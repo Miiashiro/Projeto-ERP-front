@@ -88,7 +88,8 @@
     border-radius: 8px;
     border: none;
     font-size: 20px;
-    background-color: #997977;
+    /*background-color: #997977;*/
+    background-color: rgb(121, 116, 116);
     color: #FFC15A;
     cursor: pointer;
 }

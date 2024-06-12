@@ -24,7 +24,7 @@ export default function Table({ filter }) {
                     endereco: "",
                     bairro: "",
                     cidade: "",
-                    pais: "",
+                    estado: "",
                 }
             ]
             setData(falseData)
@@ -34,8 +34,6 @@ export default function Table({ filter }) {
     useEffect(() => {
         getData()
     }, [])
-
-    console.log(data)
 
     const columns = [
         { field: "id", headerName: "ID", width: 90 },
@@ -47,7 +45,7 @@ export default function Table({ filter }) {
         { field: "endereco", headerName: "Endereço", width: 200 },
         { field: "bairro", headerName: "Bairro", width: 120 },
         { field: "cidade", headerName: "Cidade", width: 120 },
-        { field: "pais", headerName: "País", width: 100 },
+        { field: "estado", headerName: "Estado", width: 100 },
         {
             field: "actions",
             type: "actions",
@@ -73,7 +71,7 @@ export default function Table({ filter }) {
             endereco: row.address,
             bairro: row.neighborhood,
             cidade: row.city,
-            pais: row.country
+            estado: row.state
         }
     ))
 

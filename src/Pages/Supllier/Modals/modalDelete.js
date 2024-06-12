@@ -3,18 +3,7 @@ import { GridActionsCellItem } from '@mui/x-data-grid'
 import React, { useState } from 'react'
 import { FaTrash } from 'react-icons/fa'
 import api from '../../../api'
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+import mask from './mask.js'
 
 const ModalDelete = ({params}) => {
 
@@ -24,12 +13,14 @@ const ModalDelete = ({params}) => {
 
   const toggle = () => setOpen(!open)
 
+  //Selecionar fornecedor
   const selectSupllier = (params) => {
     toggle()
     setId(params.row.id)
     setName(params.row.fornecedor)
   }
 
+  //Deletar fornecedor
   async function deleteSupllier(){
     try{
       await api.delete(`/fornecedor/${id}`)
@@ -41,6 +32,7 @@ const ModalDelete = ({params}) => {
       alert(`Erro ao deletar fornecedor. Erro ${error}`)
     }
   }
+  
   return (
     <>
       <GridActionsCellItem
@@ -54,7 +46,7 @@ const ModalDelete = ({params}) => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={mask.style}>
           <h2>Deletar Fornecedor</h2>
           <hr />
           <br />

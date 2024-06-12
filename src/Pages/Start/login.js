@@ -16,7 +16,7 @@ function Login() {
         try{
             const data = {email, password}
 
-            api.post('/user', data)
+            await api.post('/user', data)
 
             alert("Login afetuado com sucesso")
             navigate("/Home")
@@ -25,7 +25,6 @@ function Login() {
         }
     }
 
-    console.log(email)
     return (
         <LayoutComponent title="Login">
             <form>
@@ -54,7 +53,7 @@ function Login() {
             </form>
 
 
-            <p>Esqueceu a senha? Clique aqui</p>
+            <p>Esqueceu a senha? <Link to="/NovaSenha">Clique aqui</Link></p>
 
             <p>Não tem uma conta? <Link to="/Cadastro">Clique aqui</Link></p>
 

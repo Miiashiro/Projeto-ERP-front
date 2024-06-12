@@ -4,67 +4,8 @@ import React, { useState } from 'react'
 import { FaEdit } from 'react-icons/fa';
 import api from '../../../api';
 import "./modal.css"
-import { IMaskInput } from 'react-imask';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
-const TextMaskTel = React.forwardRef(function TextMaskCustom(props, ref) {
-  const { onChange, ...other } = props;
-  return (
-    <IMaskInput
-      {...other}
-      mask="(00)0000-0000"
-      /*definitions={{
-        '#': /[1-9]/,
-      }}*/
-      inputRef={ref}
-      onAccept={(value) => onChange({ target: { name: props.name, value } })}
-      overwrite
-    />
-  );
-});
-
-const TextMaskCnpj = React.forwardRef(function TextMaskCustom(props, ref) {
-  const { onChange, ...other } = props;
-  return (
-    <IMaskInput
-      {...other}
-      mask="00.000.000/0000-00"
-      /*definitions={{
-        '#': /[1-9]/,
-      }}*/
-      inputRef={ref}
-      onAccept={(value) => onChange({ target: { name: props.name, value } })}
-      overwrite
-    />
-  );
-});
-
-const TextMaskCep = React.forwardRef(function TextMaskCustom(props, ref) {
-  const { onChange, ...other } = props;
-  return (
-    <IMaskInput
-      {...other}
-      mask="00000-000"
-      /*definitions={{
-        '#': /[1-9]/,
-      }}*/
-      inputRef={ref}
-      onAccept={(value) => onChange({ target: { name: props.name, value } })}
-      overwrite
-    />
-  );
-});
+import mask from "./mask"
+import axios from 'axios';
 
 const ModalEdit = ({ params }) => {
 
@@ -78,10 +19,11 @@ const ModalEdit = ({ params }) => {
   const [address, setAddress] = useState("")
   const [neighborhood, setNbhd] = useState("")
   const [city, setCity] = useState("")
-  const [country, setCountry] = useState("")
+  const [state, setState] = useState("")
 
   const toggle = () => setOpen(!open)
   
+  //Guardar dados do fornecedor selecionado
   const selectSupllier = (params) => {
     toggle()
     setId(params.row.id)
@@ -93,13 +35,14 @@ const ModalEdit = ({ params }) => {
     setAddress(params.row.endereco)
     setNbhd(params.row.bairro)
     setCity(params.row.cidade)
-    setCountry(params.row.pais)
+    setState(params.row.pais)
   }
 
+  //Editar fornecedor
   async function editSupllier(){
     try{
       const data = {
-        id, supllier, email, tel, cnpj, cep, address, neighborhood, city, country
+        id, supllier, email, tel, cnpj, cep, address, neighborhood, city, state
       }
 
       await api.put('/fornecedor', data)
@@ -110,6 +53,20 @@ const ModalEdit = ({ params }) => {
 
     }catch(error){
       alert(`Erro ao atualiar. Erro ${error}.`)
+    }
+  }
+
+  //Api de cep
+  async function checkCep(){
+    try{
+      const {data} = await axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+      setAddress(data.logradouro)
+      setNbhd(data.bairro)
+      setCity(data.localidade)
+      setState(data.uf)
+      
+    }catch(error){
+      console.log(error)
     }
   }
 
@@ -126,7 +83,7 @@ const ModalEdit = ({ params }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={mask.style}>
           <h2>Alterar Fornecedor</h2>
           <hr />
           <br />
@@ -149,21 +106,22 @@ const ModalEdit = ({ params }) => {
               <TextField className='tel' label="Telefone" type="tel"
                 value={tel} onChange={(e) => setTel(e.target.value)} 
                 InputProps={{
-                  inputComponent: TextMaskTel,
+                  inputComponent: mask.TextMaskTel,
                 }}/>
             </div>
 
             <div className='wrap-input-group'>
               <TextField className='cnpj' label="CNPJ" type="text"
                 value={cnpj} onChange={(e) => setCnpj(e.target.value)} 
+                onBlur={checkCep}
                 InputProps={{
-                  inputComponent: TextMaskCnpj,
+                  inputComponent: mask.TextMaskCnpj,
                 }}/>
 
               <TextField className="cep" label="CEP" type="text"
                 value={cep} onChange={(e) => setCep(e.target.value)} 
                 InputProps={{
-                  inputComponent: TextMaskCep,
+                  inputComponent: mask.TextMaskCep,
                 }}/>
             </div>
 
@@ -178,7 +136,7 @@ const ModalEdit = ({ params }) => {
                 value={city} onChange={(e) => setCity(e.target.value)} />
 
               <TextField className="pais" label="País" type="text"
-                value={country} onChange={(e) => setCountry(e.target.value)} />
+                value={state} onChange={(e) => setState(e.target.value)} />
             </div>
 
             <div className='group-buttons'>
