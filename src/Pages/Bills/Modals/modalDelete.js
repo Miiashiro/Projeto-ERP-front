@@ -3,36 +3,24 @@ import { GridActionsCellItem } from '@mui/x-data-grid'
 import React, { useState } from 'react'
 import { FaTrash } from 'react-icons/fa'
 import api from '../../../api';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+import mask from '../../../Components/Masks/mask';
 
 const ModalDelete = ({ params }) => {
 
-  //Atributos
   const [open, setOpen] = useState(false)
   const [id, setId] = useState("")
   const [bill, setBill] = useState("")
 
   const toggle = () => setOpen(!open)
 
-  //Set
+  //Abre o modal e seta os valores nas const
   const handleShowDelete = (params) => {
     toggle()
     setId(params.row.id)
     setBill(params.row.conta)
   }
 
-  //Método delete
+  //Deletar conta
   async function deleteBill(){
     try{
       await api.delete(`/conta/${id}`)
@@ -55,10 +43,8 @@ const ModalDelete = ({ params }) => {
 
       <Modal open={open}
         onClose={toggle}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={mask.style}>
           <h2>Deletar Conta</h2>
           <hr />
           <br />

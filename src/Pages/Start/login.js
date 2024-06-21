@@ -14,11 +14,15 @@ function Login() {
         e.preventDefault()
 
         try{
-            const data = {email, password}
+            const dataLogin = {email, password}
 
-            await api.post('/user', data)
+            const {data} = await api.post('/user/login', dataLogin)
 
             alert("Login afetuado com sucesso")
+
+            //sessionStorage.setItem("Login", true)
+            sessionStorage.setItem("Token", data.token)
+            
             navigate("/Home")
         }catch(error){
             alert(`algo deu errado. Erro: ${error}, revize os campos.`)

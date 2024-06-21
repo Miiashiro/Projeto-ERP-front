@@ -3,7 +3,7 @@ import { GridActionsCellItem } from '@mui/x-data-grid'
 import React, { useState } from 'react'
 import { FaTrash } from 'react-icons/fa'
 import api from '../../../api'
-import mask from './mask.js'
+import mask from '../../../Components/Masks/mask'
 
 const ModalDelete = ({params}) => {
 
@@ -13,8 +13,8 @@ const ModalDelete = ({params}) => {
 
   const toggle = () => setOpen(!open)
 
-  //Selecionar fornecedor
-  const selectSupllier = (params) => {
+  //Abre o modal e seta os valores nas const
+  const handleShowDelete = (params) => {
     toggle()
     setId(params.row.id)
     setName(params.row.fornecedor)
@@ -38,7 +38,7 @@ const ModalDelete = ({params}) => {
       <GridActionsCellItem
         icon={<FaTrash />}
         label="delete"
-        onClick={() => selectSupllier(params)}
+        onClick={() => handleShowDelete(params)}
       />
 
       <Modal open={open}

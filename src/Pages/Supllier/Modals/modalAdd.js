@@ -2,7 +2,7 @@ import { Box, Modal, TextField } from '@mui/material';
 import React, { useState } from 'react'
 import api from '../../../api';
 import "./modal.css"
-import mask from "./mask.js"
+import mask from '../../../Components/Masks/mask';
 import axios from 'axios';
 
 const ModalAdd = () => {

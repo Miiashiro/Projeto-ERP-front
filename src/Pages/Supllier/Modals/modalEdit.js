@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { FaEdit } from 'react-icons/fa';
 import api from '../../../api';
 import "./modal.css"
-import mask from "./mask"
+import mask from '../../../Components/Masks/mask';
 import axios from 'axios';
 
 const ModalEdit = ({ params }) => {
@@ -23,8 +23,8 @@ const ModalEdit = ({ params }) => {
 
   const toggle = () => setOpen(!open)
   
-  //Guardar dados do fornecedor selecionado
-  const selectSupllier = (params) => {
+  //Abre o modal e seta os valores nas const
+  const handleShowEdit = (params) => {
     toggle()
     setId(params.row.id)
     setSupllier(params.row.fornecedor)
@@ -75,7 +75,7 @@ const ModalEdit = ({ params }) => {
       <GridActionsCellItem
         icon={<FaEdit />}
         label="Edit"
-        onClick={() => selectSupllier(params)}
+        onClick={() => handleShowEdit(params)}
       />
 
       <Modal open={open}

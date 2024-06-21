@@ -1,5 +1,6 @@
 import React from "react";
 import { IMaskInput } from 'react-imask';
+import { NumericFormat } from 'react-number-format';
 
 //Estilo dos modais
 const style = {
@@ -65,4 +66,32 @@ const TextMaskCep = React.forwardRef(function TextMaskCustom(props, ref) {
     );
 });
 
-export default { style, TextMaskTel, TextMaskCnpj, TextMaskCep}
+//mascara de preço em reais
+const priceCustom = React.forwardRef(
+    function NumericFormatCustom(props, ref) {
+      const { onChange, ...other } = props;
+  
+      return (
+        <NumericFormat
+          {...other}
+          getInputRef={ref}
+          onValueChange={(values) => {
+            onChange({
+              target: {
+                name: props.name,
+                value: values.value,
+              },
+            });
+          }}
+          decimalScale={2} 
+          fixedDecimalScale={true}
+  
+          thousandSeparator=","
+          allowedDecimalSeparators={['.']}
+          prefix="R$"
+        />
+      );
+    },
+  );
+
+export default { style, TextMaskTel, TextMaskCnpj, TextMaskCep, priceCustom}

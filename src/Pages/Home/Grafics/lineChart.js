@@ -16,8 +16,6 @@ const LineCharts = () => {
     getData()
   }, [])
 
-  console.log(venda)
-
   const data = venda.map((row) => (
     {
       meses: row.label,

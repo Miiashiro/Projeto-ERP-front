@@ -19,14 +19,14 @@ function App() {
         <Route path="/Cadastro" element={<Registration/>} />
         <Route path="/NovaSenha" element={<NewPassword />} />
 
-        <Route path="" element={<ProtectedRouter />}>
+{ /*       <Route path="" element={<ProtectedRouter />}> */}
           <Route path="/Home" element={<Home/>} />
           <Route path="/Produto" element={<Product/>} />
           <Route path="/Fornecedor" element={<Fornecedor />} />
           <Route path="/Conta" element={<Bills />} />
           <Route path="/Venda" element={<Sales />} />
           <Route path="/Venda/Adicionar" element={<ModalAdd />} />
-        </Route>
+        {/*</Route>*/}
 
         <Route path="*" element={<Error />} />
       </Routes>

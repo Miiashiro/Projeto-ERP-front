@@ -15,7 +15,7 @@ function Registration(){
         try{
             const data = { name, email, password }
 
-            await api.post('/cadastro', data)
+            await api.post('/user/cadastro', data)
 
             alert("Cadastro realizado")
 

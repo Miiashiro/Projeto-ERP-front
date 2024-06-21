@@ -3,19 +3,8 @@ import { GridActionsCellItem } from '@mui/x-data-grid'
 import React, { useState } from 'react'
 import { FaTrash } from 'react-icons/fa'
 import api from '../../../api';
+import mask from '../../../Components/Masks/mask';
 import './modal.css'
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
 
 const DeleteModal = ({ params }) => {
 
@@ -25,12 +14,14 @@ const DeleteModal = ({ params }) => {
 
     const toggle = () => setOpen(!open)
 
+    //Abre o modal e seta os valores nas const
     const selectProd = (params) => {
         toggle()
         setId(params.row.id)
         setName(params.row.produto)
     }
 
+    //Deletar produto
     async function deleteProd(){
         try{
             await api.delete(`/produto/${id}`)
@@ -52,10 +43,8 @@ const DeleteModal = ({ params }) => {
 
             <Modal open={open}
                 onClose={toggle}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box sx={mask.style}>
                     <h2>Deletar Produto</h2>
                     <hr />
                     <br />
