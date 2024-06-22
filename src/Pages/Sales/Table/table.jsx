@@ -9,9 +9,10 @@ import ModalDelete from "../Modals/modalDelete";
 
 export default function Table({ filter }) {
     const [data, setData] = useState([])
+    const token = sessionStorage.getItem("Token")
 
     async function getData() {
-        const { data } = await api.get('/venda')
+        const { data } = await api.get('/venda', {headers: {'Authorization':`Bearer ${token}`}})
 
         if (data.length > 0) {
             setData(data)

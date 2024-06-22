@@ -10,6 +10,7 @@ const ModalDelete = ({params}) => {
   const [open, setOpen] = useState(false)
   const [id, setId] = useState("")
   const [name, setName] = useState("")
+  const token = sessionStorage.getItem("Token")
 
   const toggle = () => setOpen(!open)
 
@@ -23,7 +24,7 @@ const ModalDelete = ({params}) => {
   //Deletar fornecedor
   async function deleteSupllier(){
     try{
-      await api.delete(`/fornecedor/${id}`)
+      await api.delete(`/fornecedor/${id}`, {headers: {'Authorization':`Bearer ${token}`}})
 
       alert("Fornecedor deletado!")
 

@@ -7,21 +7,22 @@ import ModalDelete from "../Modals/modalDelete";
 
 export default function Table({ filter }) {
 
-    //Atributo
     const [data, setData] = useState([])
+    const token = sessionStorage.getItem("Token")
 
     //Método get
     async function getData() {
-        const { data } = await api.get('/conta')
+        const { data } = await api.get('/conta', {headers: {'Authorization':`Bearer ${token}`}})
         if (data.length > 0) {
             setData(data)
         } else {
+            //Adiciona valores nulos se o metodo não retornar valores
             const falseData = [
                 {
                     id: "",
                     conta: "",
                     preco: "",
-                    data: ""
+                    data: null
                 }
             ]
             setData(falseData)
@@ -52,7 +53,7 @@ export default function Table({ filter }) {
         }
     ]
 
-    //Linha
+    //Linhas
     const initialRows = data.map((row) => (
         {
             id: row.id_bill,

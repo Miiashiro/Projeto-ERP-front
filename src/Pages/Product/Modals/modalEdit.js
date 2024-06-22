@@ -17,9 +17,11 @@ const EditModal = ({ params }) => {
   const [quant, setQuant] = useState("")
   const [quantMin, setQuantMin] = useState("")
   const [quantMax, setQuantMax] = useState("")
+  const token = sessionStorage.getItem("Token")
 
   const toggle = () => setOpen(!open)
 
+  //Abre o modal e seta os valores nas const
   const handleShowEdit = (params) => {
     toggle()
     setId(params.row.id)
@@ -31,13 +33,14 @@ const EditModal = ({ params }) => {
     setQuantMax(params.row.quantMax)
   }
 
+  //Alterar produto
   async function alterProd() {
     try {
       const data = {
         id, name, desc, price, quant, quantMin, quantMax
       }
 
-      await api.put('/produto', data)
+      await api.put('/produto', data, {headers: {'Authorization':`Bearer ${token}`}})
 
       alert("Produto alterado")
       window.location.reload()
@@ -62,8 +65,7 @@ const EditModal = ({ params }) => {
           <hr />
           <br />
           <div className='modal'>
-            
-            {/*Id e Nome*/}
+
             <div className='wrap-input-group'>
               <TextField className="ids" label="Id" disabled
                 value={id} onChange={(e) => setId(e.target.value)}
@@ -74,12 +76,10 @@ const EditModal = ({ params }) => {
               />
             </div>
 
-            {/*Descrição*/}
             <TextField className='desc' label="Descrição"
               value={desc} onChange={(e) => setDesc(e.target.value)}
             />
 
-            {/*Preço*/}
             <TextField className='preco' label="Preço"
               value={price} onChange={(e) => setPrice(e.target.value)}
               InputProps={{
@@ -87,7 +87,6 @@ const EditModal = ({ params }) => {
               }}
             />
 
-            {/*Quantidades*/}
             <div className='wrap-input-group'>
               <TextField className="quant" label="Quantidade"
                 value={quant} onChange={(e) => setQuant(e.target.value)}

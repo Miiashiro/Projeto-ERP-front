@@ -17,6 +17,7 @@ const ModalAdd = () => {
   const [neighborhood, setNeighborhood] = useState("")
   const [city, setCity] = useState("")
   const [state, setState] = useState("")
+  const token = sessionStorage.getItem("Token")
 
   const toggle = () => setOpen(!open)
 
@@ -27,7 +28,7 @@ const ModalAdd = () => {
         supllier, email, tel, cnpj, cep, address, neighborhood, city, state
       }
 
-      await api.post('/fornecedor', data)
+      await api.post('/fornecedor', data, {headers: {'Authorization':`Bearer ${token}`}})
 
       alert("Fornecedor cadastrado")
       window.location.reload()

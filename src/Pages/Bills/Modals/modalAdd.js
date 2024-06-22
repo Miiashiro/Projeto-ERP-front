@@ -10,6 +10,7 @@ const ModalAdd = () => {
   const [bill, setBill] = useState("")
   const [price, setPrice] = useState("")
   const [date, setDate] = useState("")
+  const token = sessionStorage.getItem("Token")
 
   const toggle = () => setOpen(!open)
 
@@ -20,7 +21,7 @@ const ModalAdd = () => {
         bill, price, date
       }
 
-      await api.post('/conta', data)
+      await api.post('/conta', data, {headers: {'Authorization':`Bearer ${token}`}})
       alert("Conta cadastrada")
 
       window.location.reload()

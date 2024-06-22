@@ -11,11 +11,12 @@ const DeleteModal = ({ params }) => {
     const [open, setOpen] = useState(false)
     const [id, setId] = useState("")
     const [name, setName] = useState("")
+    const token = sessionStorage.getItem("Token")
 
     const toggle = () => setOpen(!open)
 
     //Abre o modal e seta os valores nas const
-    const selectProd = (params) => {
+    const handleShowDelete = (params) => {
         toggle()
         setId(params.row.id)
         setName(params.row.produto)
@@ -24,7 +25,7 @@ const DeleteModal = ({ params }) => {
     //Deletar produto
     async function deleteProd(){
         try{
-            await api.delete(`/produto/${id}`)
+            await api.delete(`/produto/${id}`, {headers: {'Authorization':`Bearer ${token}`}})
 
             alert("Produto deletado")
 
@@ -38,7 +39,7 @@ const DeleteModal = ({ params }) => {
             <GridActionsCellItem
                 icon={<FaTrash />}
                 label="Delete"
-                onClick={() => selectProd(params)}
+                onClick={() => handleShowDelete(params)}
             />
 
             <Modal open={open}

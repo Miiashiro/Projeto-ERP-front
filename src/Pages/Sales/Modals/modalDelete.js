@@ -9,6 +9,7 @@ const ModalDelete = ({ params }) => {
     const [open, setOpen] = useState(false)
     const [id, setId] = useState("")
     const [prod, setProd] = useState("")
+    const token = sessionStorage.getItem("Token")
 
     const toggle = () => setOpen(!open)
 
@@ -20,7 +21,7 @@ const ModalDelete = ({ params }) => {
 
     async function deleteSale(){
         try{
-            await api.delete(`/venda/${id}`)
+            await api.delete(`/venda/${id}`, {headers: {'Authorization':`Bearer ${token}`}})
 
             alert("Venda deletada")
 

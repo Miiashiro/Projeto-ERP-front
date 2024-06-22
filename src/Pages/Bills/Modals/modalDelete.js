@@ -10,6 +10,7 @@ const ModalDelete = ({ params }) => {
   const [open, setOpen] = useState(false)
   const [id, setId] = useState("")
   const [bill, setBill] = useState("")
+  const token = sessionStorage.getItem("Token")
 
   const toggle = () => setOpen(!open)
 
@@ -23,7 +24,7 @@ const ModalDelete = ({ params }) => {
   //Deletar conta
   async function deleteBill(){
     try{
-      await api.delete(`/conta/${id}`)
+      await api.delete(`/conta/${id}`, {headers: {'Authorization':`Bearer ${token}`}})
 
       alert("Conta deletada")
 

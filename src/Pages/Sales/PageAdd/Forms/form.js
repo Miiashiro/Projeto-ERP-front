@@ -10,10 +10,11 @@ function Form(){
     const [id_prod, setIdProd] = useState("")
     const [quant, setQuant] = useState("")
     const [dateSale, setDateSale] = useState("")
+    const token = sessionStorage.getItem("Token")
 
     //Pegar nome dos produtos
     async function getData(){
-      const {data} = await api.get('/produto')
+      const {data} = await api.get('/produto', {headers: {'Authorization':`Bearer ${token}`}})
       setData(data)
     }
 
@@ -83,7 +84,7 @@ function Form(){
               <button className='adicionar' onClick={addSale}>Adicionar</button>
             </div>
 
-            <button className='salvar' onClick={save}>Salvar</button>
+            <button className='salvar' onClick={save}>SALVAR</button>
           </div>
     )
 }

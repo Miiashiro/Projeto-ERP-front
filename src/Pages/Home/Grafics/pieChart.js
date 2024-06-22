@@ -6,9 +6,10 @@ import { ResponsiveContainer } from 'recharts'
 
 const PieCharts = () => {
   const [conta, setConta] = useState([])
+  const token = sessionStorage.getItem("Token")
 
   async function getData() {
-    const { data } = await api.get('/conta')
+    const { data } = await api.get('/conta', {headers: {'Authorization':`Bearer ${token}`}})
     setConta(data)
   }
 

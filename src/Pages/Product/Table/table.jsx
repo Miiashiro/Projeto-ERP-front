@@ -7,16 +7,18 @@ import "../product.css"
 
 export default function Table({ filter }) {
 
-    //Atributo
     const [data, setData] = useState([])
+
+    const token = sessionStorage.getItem('Token')
 
     //Método get
     async function getData() {
-        const { data } = await api.get('/produto')
+        const { data } = await api.get('/produto', {headers: {'Authorization':`Bearer ${token}`}})
 
         if (data.length > 0) {
             setData(data)
         } else {
+            //Adiciona valores nulos se o metodo não retornar valores
             const falseData = [
                 {
                     id: "",
@@ -60,7 +62,7 @@ export default function Table({ filter }) {
         }
     ]
 
-    //Linha
+    //Linhas
     const initialRows = data.map((row) => (
         {
             id: row.id_prod,

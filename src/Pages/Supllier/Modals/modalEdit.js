@@ -20,6 +20,7 @@ const ModalEdit = ({ params }) => {
   const [neighborhood, setNbhd] = useState("")
   const [city, setCity] = useState("")
   const [state, setState] = useState("")
+  const token = sessionStorage.getItem("Token")
 
   const toggle = () => setOpen(!open)
   
@@ -45,7 +46,7 @@ const ModalEdit = ({ params }) => {
         id, supllier, email, tel, cnpj, cep, address, neighborhood, city, state
       }
 
-      await api.put('/fornecedor', data)
+      await api.put('/fornecedor', data, {headers: {'Authorization':`Bearer ${token}`}})
 
       alert("Fornecedor alterado!")
 

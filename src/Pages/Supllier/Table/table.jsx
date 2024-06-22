@@ -7,9 +7,10 @@ import "../supllier.css"
 
 export default function Table({ filter }) {
     const [data, setData] = useState([])
+    const token = sessionStorage.getItem("Token")
 
     async function getData() {
-        const { data } = await api.get('/fornecedor')
+        const { data } = await api.get('/fornecedor', {headers: {'Authorization':`Bearer ${token}`}})
         if (data.length > 0) {
             setData(data)
         } else {

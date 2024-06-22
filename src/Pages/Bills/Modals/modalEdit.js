@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { FaEdit } from 'react-icons/fa'
 import api from '../../../api';
 import mask from '../../../Components/Masks/mask';
+import moment from "moment/moment";
 
 const ModalEdit = ({params}) => {
 
@@ -12,6 +13,7 @@ const ModalEdit = ({params}) => {
     const [bill, setBill] = useState("")
     const [price, setPrice] = useState("")
     const [date, setDate] = useState("")
+    const token = sessionStorage.getItem("Token")
 
     const toggle = () => setOpen(!open)
 
@@ -21,7 +23,7 @@ const ModalEdit = ({params}) => {
         setId(params.row.id)
         setBill(params.row.conta)
         setPrice(params.row.preco)
-        setDate(params.row.date)
+        setDate(params.row.data)
     }
 
     //Editar Conta
@@ -31,7 +33,7 @@ const ModalEdit = ({params}) => {
                 id, bill, price, date
             }
 
-            await api.put('/conta', data)
+            await api.put('/conta', data, {headers: {'Authorization':`Bearer ${token}`}})
 
             alert("Conta alterada")
             window.location.reload()
@@ -72,7 +74,7 @@ const ModalEdit = ({params}) => {
                                 inputComponent: mask.priceCustom,
                               }}/>
 
-                        <TextField className='data' type="date"
+                        <TextField className='data' label="Data"
                             value={date} onChange={(e) => setDate(e.target.value)} />
 
                         <div className='group-buttons'>

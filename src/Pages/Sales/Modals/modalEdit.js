@@ -16,11 +16,13 @@ const ModalEdit = ({ params }) => {
     const [price, setPrice] = useState("")
     const [vlrTotal, setVlrTotal] = useState("")
     const [date, setDate] = useState("")
+    const token = sessionStorage.getItem("Token")
+
     const toggle = () => setOpen(!open)
 
     //Busca de dados
     async function getData() {
-        const { data } = await api.get('/produto')
+        const { data } = await api.get('/produto', {headers: {'Authorization':`Bearer ${token}`}})
         setData(data)
     }
 

@@ -13,16 +13,18 @@ const ModalAdd = () => {
   const [quant, setQuant] = useState("")
   const [quantMin, setQuantMin] = useState("")
   const [quantMax, setQuantMax] = useState("")
+  const token = sessionStorage.getItem("Token")
 
   const toggle = () => setOpen(!open)
 
+  //Adicionar produto
   async function addProd() {
     try {
       const data = {
         name, desc, price, quant, quantMin, quantMax
       }
 
-      await api.post('/produto', data)
+      await api.post('/produto', data, {headers: {'Authorization':`Bearer ${token}`}})
       alert("Produto cadastrado")
 
       window.location.reload()
