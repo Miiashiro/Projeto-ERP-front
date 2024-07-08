@@ -1,9 +1,19 @@
+.form-venda{
+    @media(max-width: 1050px){
+        width: 100%;
+    }
+}
+
 /*Inputs*/
 .inputs{
     background-color: #ffff;
     padding: 15px;
     width: 350px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    @media(max-width: 1050px){
+        width: 100%;
+    }
 }
 
 .inputs .wrap-input-venda{
@@ -19,7 +29,7 @@
     margin-top: 16px;
 }
 
-/*botao*/
+/*botoes*/
 .adicionar{
     padding: 4px;
     border-radius: 4px;
@@ -36,7 +46,7 @@
     cursor: pointer;
 }
 
-.nsei .salvar{
+.form-venda .salvar{
     margin-top: 35px;
     padding: 5px;
     width: 100%;

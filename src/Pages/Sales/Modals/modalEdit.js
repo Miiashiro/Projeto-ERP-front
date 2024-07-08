@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { FaEdit } from 'react-icons/fa'
 import api from '../../../api'
 import mask from '../../../Components/Masks/mask'
+import moment from 'moment'
 import "./modal.css"
 
 const ModalEdit = ({ params }) => {
@@ -11,6 +12,7 @@ const ModalEdit = ({ params }) => {
     const [data, setData] = useState([])
     const [open, setOpen] = useState(false)
     const [id, setId] = useState("")
+    const [value, setValue] = useState("");
     const [prod, setProd] = useState("")
     const [quant, setQuant] = useState("")
     const [price, setPrice] = useState("")
@@ -22,7 +24,7 @@ const ModalEdit = ({ params }) => {
 
     //Busca de dados
     async function getData() {
-        const { data } = await api.get('/produto', {headers: {'Authorization':`Bearer ${token}`}})
+        const { data } = await api.get('/produto', { headers: { 'Authorization': `Bearer ${token}` } })
         setData(data)
     }
 
@@ -30,15 +32,16 @@ const ModalEdit = ({ params }) => {
         getData()
     }, [])
 
-    //Abre o modal e seta os valores nas const
+    //Abre o modal e seta os valores nas variaveis
     const handleShowEdit = (params) => {
         toggle()
         setId(params.row.id)
-        setProd(params.row.produto)
+        setValue(params.row.produto.toString())
+
         setQuant(params.row.quant)
         setPrice(params.row.preco)
         setVlrTotal(params.row.total)
-        setDate(params.row.data)
+        setDate(moment(params.row.data, "DD-MM-YYYY").format("YYYY-MM-DD"))
     }
 
     //Altera a venda
@@ -48,7 +51,7 @@ const ModalEdit = ({ params }) => {
                 id, prod, quant, date
             }
 
-            await api.put('/venda', data)
+            await api.put('/venda', data, {headers: {'Authorization':`Bearer ${token}`}})
             alert("Venda alterada")
 
             window.location.reload()
@@ -60,6 +63,7 @@ const ModalEdit = ({ params }) => {
     //busca o nome dos produtos para o campo de autocompletar
     const autoComplete = data.map((row) => (
         {
+            id: row,
             label: row.product_name
         }
     ))
@@ -87,7 +91,15 @@ const ModalEdit = ({ params }) => {
                             <Autocomplete disablePortal options={autoComplete}
                                 renderInput={(params) => <TextField {...params} label="Produto" />}
                                 className='prod'
-                                value={prod} onChange={(e) => setProd(e.target.value)} />
+                                value={value}
+                                onChange={(event, newValue) => {
+                                    setValue(newValue);
+                                }}
+                                inputValue={prod}
+                                onInputChange={(event, newInputValue) => {
+                                    setProd(newInputValue);
+                                }}
+                                isOptionEqualToValue={(option, value) => option.id === value.id} />
                         </div>
 
                         <div className='wrap-input-group'>
@@ -108,7 +120,7 @@ const ModalEdit = ({ params }) => {
                                     inputComponent: mask.priceCustom,
                                 }} />
 
-                            <TextField label="Data" className='field'
+                            <TextField label="Data" className='field' type="date"
                                 value={date} onChange={(e) => setDate(e.target.value)} />
                         </div>
 
@@ -117,7 +129,6 @@ const ModalEdit = ({ params }) => {
 
                             <button className='alter' onClick={alterSale}>Alterar</button>
                         </div>
-
                     </div>
                 </Box>
             </Modal>

@@ -11,7 +11,19 @@ const BarCharts = () => {
 
   async function getData() {
     const { data } = await api.get('/barChart')
-    setData(data)
+
+    if (data.length > 0) {
+      setData(data)
+    } else {
+      const falseData = [
+        {
+          product: 0,
+          total: 0
+        }
+      ]
+
+      setData(falseData)
+    }
   }
 
   useEffect(() => {

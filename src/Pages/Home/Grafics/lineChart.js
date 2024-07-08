@@ -19,7 +19,7 @@ const LineCharts = () => {
   const data = venda.map((row) => (
     {
       meses: row.label,
-      valor: row.resultado
+      valor: row.total
     }
   ))
   return (

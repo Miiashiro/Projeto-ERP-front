@@ -2,4 +2,10 @@
     background-color: #ffff;
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 50%;
+
+    @media(max-width: 1050px){
+        width: 100%;
+        margin-bottom: 14px
+    }
 }

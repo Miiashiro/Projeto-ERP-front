@@ -14,10 +14,7 @@ export default function Table({ filter }) {
     async function getData() {
         const { data } = await api.get('/venda', {headers: {'Authorization':`Bearer ${token}`}})
 
-        if (data.length > 0) {
-            setData(data)
-        }else{
-
+        if (data.length <= 0) {
             const falseData = [
                 {
                     id_sale: "",
@@ -29,6 +26,8 @@ export default function Table({ filter }) {
                 }
             ]
             setData(falseData)
+        }else{
+            setData(data)
         }
     }
 
@@ -70,7 +69,7 @@ export default function Table({ filter }) {
 
     const saleFiltrado = initialRows.filter((row) => {
         const lowerBusca = filter.toLowerCase()
-        return row.produto.toString().toLowerCase().includes(lowerBusca)
+        return row.produto?.toString().toLowerCase().includes(lowerBusca)
     })
 
     return (

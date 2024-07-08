@@ -13,12 +13,14 @@ const ModalDelete = ({ params }) => {
 
     const toggle = () => setOpen(!open)
 
+    //Abre o modal e seta os valores nas variaveis
     const selectSale = (params) => {
         toggle()
         setId(params.row.id)
         setProd(params.row.produto)
     }
 
+    //Deleta a venda
     async function deleteSale(){
         try{
             await api.delete(`/venda/${id}`, {headers: {'Authorization':`Bearer ${token}`}})

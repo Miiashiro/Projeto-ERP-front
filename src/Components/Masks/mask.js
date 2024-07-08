@@ -85,8 +85,8 @@ const priceCustom = React.forwardRef(
           }}
           decimalScale={2} 
           fixedDecimalScale={true}
-  
-          thousandSeparator=","
+          
+          thousandSeparator={[","]}
           allowedDecimalSeparators={['.']}
           prefix="R$"
         />

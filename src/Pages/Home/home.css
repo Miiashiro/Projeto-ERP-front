@@ -12,6 +12,10 @@
     flex-wrap: wrap;
     margin-top: 10px;
     justify-content: space-between;
+
+    @media(max-width: 1480px){
+        justify-content: center
+    }
 }
 
 .pie-chart, .bar-chart{

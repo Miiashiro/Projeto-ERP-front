@@ -19,12 +19,11 @@ export default function TableAddVenda() {
         } else{
           const falseData = [
             {
-              id_sale: "",
-              product_name: "",
-              quantidade: "",    
-              price: "",
-              total: "",
-              date_sale: ""
+              id_sale: 1,
+              product_name: "Adicione",
+              quantidade: "uma",    
+              price: "venda",
+              total: null
             }
           ]
           setData(falseData)   

@@ -10,7 +10,19 @@ const PieCharts = () => {
 
   async function getData() {
     const { data } = await api.get('/conta', {headers: {'Authorization':`Bearer ${token}`}})
-    setConta(data)
+    
+    if(data.length > 0){
+      setConta(data)
+    }else{
+      const falseData = [
+        {
+          id: 1,
+          price: 1,
+          name_bill: "Sem Dados"
+        }
+      ]
+      setConta(falseData)
+    }
   }
 
   useEffect(() => {

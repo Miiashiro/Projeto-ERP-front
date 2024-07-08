@@ -18,19 +18,23 @@ const ModalEdit = ({params}) => {
     const toggle = () => setOpen(!open)
 
     //Abre o modal e seta os valores nas const
-    const handleShowEdit = (params) => {
+    async function handleShowEdit(params){
         toggle()
         setId(params.row.id)
         setBill(params.row.conta)
         setPrice(params.row.preco)
-        setDate(params.row.data)
+        setDate(moment(params.row.data, "DD/MM/YYYY").format("YYYY-MM-DD"))
+        
     }
 
     //Editar Conta
     async function editBill(){
         try{
             const data = {
-                id, bill, price, date
+                id, 
+                bill, 
+                price, 
+                date
             }
 
             await api.put('/conta', data, {headers: {'Authorization':`Bearer ${token}`}})
@@ -68,13 +72,13 @@ const ModalEdit = ({params}) => {
                                 value={bill} onChange={(e) => setBill(e.target.value)} />
                         </div>
 
-                        <TextField className='preco' label="Valor"
+                        <TextField className='preco' label="Valor" type="text"
                             value={price} onChange={(e) => setPrice(e.target.value)} 
                             InputProps={{
                                 inputComponent: mask.priceCustom,
                               }}/>
 
-                        <TextField className='data' label="Data"
+                        <TextField className='data' label="Data" type="date"
                             value={date} onChange={(e) => setDate(e.target.value)} />
 
                         <div className='group-buttons'>
