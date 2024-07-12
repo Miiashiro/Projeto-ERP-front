@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import LayoutComponent from "../../Components/LayoutComponentStart/layoutComponent";
+import LayoutComponent from "../../Components/LayoutStart/layoutComponent";
 import api from "../../api"
 
 function NewPassword(){

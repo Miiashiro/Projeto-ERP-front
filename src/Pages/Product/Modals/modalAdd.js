@@ -3,9 +3,11 @@ import React, { useState } from 'react'
 import api from '../../../api';
 import './modal.css'
 import mask from '../../../Components/Masks/mask';
+import Swal from 'sweetalert2'
 
 const ModalAdd = () => {
 
+  const Swal = require('sweetalert2')
   const [open, setOpen] = useState(false)
   const [name, setName] = useState("")
   const [desc, setDesc] = useState("")
@@ -25,9 +27,23 @@ const ModalAdd = () => {
       }
 
       await api.post('/produto', data, {headers: {'Authorization':`Bearer ${token}`}})
-      alert("Produto cadastrado")
 
-      window.location.reload()
+      Swal.fire({
+        position: "absolute",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 2500,
+        customClass: {
+          // Classe para usar no css 
+          popup: 'custom-swal'
+        },
+        willClose: () => {
+          // Ação ao fechar o alerta
+          window.location.reload()
+        }
+      })
+
     } catch (error) {
       alert(`Erro ao cadastrar produto`)
     }
@@ -40,6 +56,7 @@ const ModalAdd = () => {
       <Modal
         open={open}
         onClose={toggle}
+        sx={{ zIndex: 1 }}
       >
         <Box sx={mask.style}>
           <h2>Adicionar Produto</h2>

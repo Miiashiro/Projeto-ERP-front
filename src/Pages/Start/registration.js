@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import api from "../../api"
-import LayoutComponent from "../../Components/LayoutComponentStart/layoutComponent"
+import LayoutComponent from "../../Components/LayoutStart/layoutComponent"
 
 function Registration(){
 

@@ -37,7 +37,6 @@ const ModalEdit = ({ params }) => {
         toggle()
         setId(params.row.id)
         setValue(params.row.produto.toString())
-
         setQuant(params.row.quant)
         setPrice(params.row.preco)
         setVlrTotal(params.row.total)
