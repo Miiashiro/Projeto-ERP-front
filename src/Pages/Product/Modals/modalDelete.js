@@ -5,6 +5,7 @@ import { FaTrash } from 'react-icons/fa'
 import api from '../../../api';
 import mask from '../../../Components/Masks/mask';
 import './modal.css'
+const Swal = require('sweetalert2')
 
 const DeleteModal = ({ params }) => {
 
@@ -27,11 +28,33 @@ const DeleteModal = ({ params }) => {
         try{
             await api.delete(`/produto/${id}`, {headers: {'Authorization':`Bearer ${token}`}})
 
-            alert("Produto deletado")
-
-            window.location.reload()
+            Swal.fire({
+                position: "absolute",
+                icon: "success",
+                title: "Produto Deletado",
+                showConfirmButton: false,
+                timer: 2000,
+                // Classe para usar no css 
+                customClass: {
+                  popup: 'custom-swal'
+                },
+                // Ação ao fechar o alerta
+                willClose: () => {
+                  window.location.reload()
+                }
+              })
         }catch(error){
-            alert(`Erro ao deletar produto. Erro ${error}`)
+            Swal.fire({
+                position: "absolute",
+                icon: "error",
+                title: `Erro no sistema. Erro ${error}`,
+                showConfirmButton: false,
+                timer: 2500,
+                customClass: {
+                  // Classe para usar no css 
+                  popup: 'custom-swal'
+                }
+              })
         }
     }
     return (
@@ -44,6 +67,7 @@ const DeleteModal = ({ params }) => {
 
             <Modal open={open}
                 onClose={toggle}
+                sx={{ zIndex: 1 }}
             >
                 <Box sx={mask.style}>
                     <h2>Deletar Produto</h2>

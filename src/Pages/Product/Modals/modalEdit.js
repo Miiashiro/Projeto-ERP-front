@@ -6,6 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import api from "../../../api"
 import "./modal.css"
 import mask from '../../../Components/Masks/mask';
+const Swal = require('sweetalert2')
 
 const EditModal = ({ params }) => {
 
@@ -42,10 +43,33 @@ const EditModal = ({ params }) => {
 
       await api.put('/produto', data, {headers: {'Authorization':`Bearer ${token}`}})
 
-      alert("Produto alterado")
-      window.location.reload()
+      Swal.fire({
+        position: "absolute",
+        icon: "success",
+        title: "Produto Alterado",
+        showConfirmButton: false,
+        timer: 2000,
+        // Classe para usar no css 
+        customClass: {
+          popup: 'custom-swal'
+        },
+        // Ação ao fechar o alerta
+        willClose: () => {
+          window.location.reload()
+        }
+      })
     } catch (error) {
-      alert(`Erro ao alterar o produto ${error}`)
+      Swal.fire({
+        position: "absolute",
+        icon: "error",
+        title: `Erro ao alterar produto. Reveja os campos!`,
+        showConfirmButton: false,
+        timer: 2500,
+        customClass: {
+          // Classe para usar no css 
+          popup: 'custom-swal'
+        }
+      })
     }
   }
 
@@ -59,6 +83,7 @@ const EditModal = ({ params }) => {
 
       <Modal open={open}
         onClose={toggle}
+        sx={{ zIndex: 1 }}
       >
         <Box sx={mask.style}>
           <h2>Alterar Produto</h2>

@@ -6,6 +6,7 @@ import api from '../../../api'
 import mask from '../../../Components/Masks/mask'
 import moment from 'moment'
 import "./modal.css"
+const Swal = require('sweetalert2')
 
 const ModalEdit = ({ params }) => {
 
@@ -51,11 +52,34 @@ const ModalEdit = ({ params }) => {
             }
 
             await api.put('/venda', data, {headers: {'Authorization':`Bearer ${token}`}})
-            alert("Venda alterada")
 
-            window.location.reload()
+            Swal.fire({
+                position: "absolute",
+                icon: "success",
+                title: "Venda Alterada",
+                showConfirmButton: false,
+                timer: 2000,
+                // Classe para usar no css 
+                customClass: {
+                  popup: 'custom-swal'
+                },
+                // Ação ao fechar o alerta
+                willClose: () => {
+                  window.location.reload()
+                }
+              })
         } catch (error) {
-            alert(`Erro ao atualizar. Erro ${error}`)
+            Swal.fire({
+                position: "absolute",
+                icon: "error",
+                title: `Erro ao alterar venda. Reveja os campos!`,
+                showConfirmButton: false,
+                timer: 2500,
+                customClass: {
+                  // Classe para usar no css 
+                  popup: 'custom-swal'
+                }
+              })
         }
     }
 

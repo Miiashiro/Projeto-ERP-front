@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import './modals.css'
 import api from '../../../api';
 import mask from '../../../Components/Masks/mask';
+const Swal = require('sweetalert2')
 
 const ModalAdd = () => {
 
@@ -22,11 +23,34 @@ const ModalAdd = () => {
       }
 
       await api.post('/conta', data, {headers: {'Authorization':`Bearer ${token}`}})
-      alert("Conta cadastrada")
 
-      window.location.reload()
+      Swal.fire({
+        position: "absolute",
+        icon: "success",
+        title: "Conta Adicionada",
+        showConfirmButton: false,
+        timer: 2000,
+        // Classe para usar no css 
+        customClass: {
+          popup: 'custom-swal'
+        },
+        // Ação ao fechar o alerta
+        willClose: () => {
+          window.location.reload()
+        }
+      })
     }catch(error){
-      alert(`Erro ao cadastrar. Erro ${error}`)
+      Swal.fire({
+        position: "absolute",
+        icon: "error",
+        title: `Erro ao adicionar conta. Reveja os campos!`,
+        showConfirmButton: false,
+        timer: 2500,
+        customClass: {
+          // Classe para usar no css 
+          popup: 'custom-swal'
+        }
+      })
     }
   }
 
@@ -37,6 +61,7 @@ const ModalAdd = () => {
       <Modal
         open={open}
         onClose={toggle}
+        sx={{ zIndex: 1 }}
       >
         <Box sx={mask.style}>
           <h2>Adicionar Conta</h2>

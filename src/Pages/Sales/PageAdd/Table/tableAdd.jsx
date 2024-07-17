@@ -4,6 +4,7 @@ import { FaTrash } from 'react-icons/fa'
 import moment from "moment/moment";
 import "./tableAddVenda.css"
 import api from '../../../../api';
+const Swal = require('sweetalert2')
 
 export default function TableAddVenda() {
 
@@ -29,7 +30,7 @@ export default function TableAddVenda() {
           setData(falseData)   
         }
       } catch(error){
-        console.log(`Eror ao encontrar dados ${error}`)
+        console.log(`Erro ao encontrar dados ${error}`)
       }
     }
     getSale()
@@ -42,7 +43,13 @@ export default function TableAddVenda() {
       await api.delete(`/lista/${id}`)
       
     }catch(error){
-      alert(`Erro ao deletar a venda. Erro ${error}`)
+      Swal.fire({
+        position: "absolute",
+        icon: "error",
+        title: `Erro no sistema. Erro ${error}`,
+        showConfirmButton: false,
+        timer: 2500
+      })
     }
   }
 

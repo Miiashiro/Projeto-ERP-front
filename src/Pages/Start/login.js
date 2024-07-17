@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import api from "../../api"
 import LayoutComponent from "../../Components/LayoutStart/layoutComponent"
 import "./start.css"
+const Swal = require('sweetalert2')
 
 function Login() {
 
@@ -18,14 +19,22 @@ function Login() {
 
             const {data} = await api.post('/user/login', dataLogin)
 
-            alert("Login afetuado com sucesso")
+            Swal.fire({
+                position: "absolute",
+                icon: "success",
+                title: "Login feito com sucesso!"
+              })
 
             //sessionStorage.setItem("Login", true)
             sessionStorage.setItem("Token", data.token)
             
             navigate("/Home")
         }catch(error){
-            alert(`algo deu errado. Erro: ${error}, revize os campos.`)
+            Swal.fire({
+                position: "absolute",
+                icon: "error",
+                title: `Senha ou email invalidos.`,
+              })
         }
     }
 

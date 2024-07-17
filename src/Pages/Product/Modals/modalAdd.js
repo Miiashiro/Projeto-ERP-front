@@ -3,11 +3,10 @@ import React, { useState } from 'react'
 import api from '../../../api';
 import './modal.css'
 import mask from '../../../Components/Masks/mask';
-import Swal from 'sweetalert2'
+const Swal = require('sweetalert2')
 
 const ModalAdd = () => {
 
-  const Swal = require('sweetalert2')
   const [open, setOpen] = useState(false)
   const [name, setName] = useState("")
   const [desc, setDesc] = useState("")
@@ -26,26 +25,35 @@ const ModalAdd = () => {
         name, desc, price, quant, quantMin, quantMax
       }
 
-      await api.post('/produto', data, {headers: {'Authorization':`Bearer ${token}`}})
+      await api.post('/produto', data, { headers: { 'Authorization': `Bearer ${token}` } })
 
       Swal.fire({
         position: "absolute",
         icon: "success",
-        title: "Your work has been saved",
+        title: "Produto Adicionado",
+        showConfirmButton: false,
+        timer: 2000,
+        // Classe para usar no css 
+        customClass: {
+          popup: 'custom-swal'
+        },
+        // Ação ao fechar o alerta
+        willClose: () => {
+          window.location.reload()
+        }
+      })
+    } catch (error) {
+      Swal.fire({
+        position: "absolute",
+        icon: "error",
+        title: `Erro ao adicionar produto. Reveja os campos!`,
         showConfirmButton: false,
         timer: 2500,
         customClass: {
           // Classe para usar no css 
           popup: 'custom-swal'
-        },
-        willClose: () => {
-          // Ação ao fechar o alerta
-          window.location.reload()
         }
       })
-
-    } catch (error) {
-      alert(`Erro ao cadastrar produto`)
     }
   }
 
@@ -70,7 +78,6 @@ const ModalAdd = () => {
             <TextField className='desc' label="Descrição"
               value={desc} onChange={(e) => setDesc(e.target.value)} />
 
-            
             <TextField className='preco' label="Preço"
               value={price} onChange={(e) => setPrice(e.target.value)}
               InputProps={{
@@ -78,13 +85,13 @@ const ModalAdd = () => {
               }} />
 
             <div className='wrap-input-group'>
-              <TextField className="quant" label="Quantidade"
+              <TextField className="quant" label="Quantidade" type="number"
                 value={quant} onChange={(e) => setQuant(e.target.value)} />
 
-              <TextField className="quant" label="Quant Min"
+              <TextField className="quant" label="Quant Min" type="number"
                 value={quantMin} onChange={(e) => setQuantMin(e.target.value)} />
 
-              <TextField className="quant" label="Quant Max"
+              <TextField className="quant" label="Quant Max" type="number"
                 value={quantMax} onChange={(e) => setQuantMax(e.target.value)} />
             </div>
 

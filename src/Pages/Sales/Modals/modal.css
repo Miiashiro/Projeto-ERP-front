@@ -5,12 +5,10 @@
 
 .wrap-input-group .id{
     width: 70px;
-
 }
 
 .wrap-input-group .prod{
     width: 250px;
-
 }
 
 .wrap-input-group .field{
@@ -37,4 +35,8 @@
 
 .add, .alter, .delete{
     background-color: rgba(12, 65, 238, 0.783);
+}
+
+.custom-swal{
+    z-index: 2;
 }

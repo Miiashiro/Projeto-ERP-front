@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { FaTrash } from 'react-icons/fa';
 import api from '../../../api';
 import mask from '../../../Components/Masks/mask';
+const Swal = require('sweetalert2')
 
 const ModalDelete = ({ params }) => {
     const [open, setOpen] = useState(false)
@@ -25,11 +26,33 @@ const ModalDelete = ({ params }) => {
         try{
             await api.delete(`/venda/${id}`, {headers: {'Authorization':`Bearer ${token}`}})
 
-            alert("Venda deletada")
-
-            window.location.reload()
+            Swal.fire({
+                position: "absolute",
+                icon: "success",
+                title: "Venda Deletada",
+                showConfirmButton: false,
+                timer: 2000,
+                // Classe para usar no css 
+                customClass: {
+                  popup: 'custom-swal'
+                },
+                // Ação ao fechar o alerta
+                willClose: () => {
+                  window.location.reload()
+                }
+              })
         }catch(error){
-            alert(`Erro ao deletar venda. Erro ${error}`)
+            Swal.fire({
+                position: "absolute",
+                icon: "error",
+                title: `Erro no sistema. Erro: ${error}`,
+                showConfirmButton: false,
+                timer: 2500,
+                customClass: {
+                  // Classe para usar no css 
+                  popup: 'custom-swal'
+                }
+              })
         }
     }
 
@@ -43,6 +66,7 @@ const ModalDelete = ({ params }) => {
 
             <Modal open={open}
                 onClose={toggle}
+                sx={{ zIndex: 1 }}
             >
                 <Box sx={mask.style}>
                     <h2>Deletar Produto</h2>

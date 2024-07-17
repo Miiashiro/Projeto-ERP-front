@@ -3,6 +3,7 @@ import "./form.css"
 import TextField from '@mui/material/TextField'
 import api from "../../../../api"
 import Autocomplete from '@mui/material/Autocomplete';
+const Swal = require('sweetalert2')
 
 function Form() {
 
@@ -15,7 +16,18 @@ function Form() {
   //Pegar nome dos produtos
   async function getData() {
     const { data } = await api.get('/produto', { headers: { 'Authorization': `Bearer ${token}` } })
-    setData(data)
+    
+    if(data.length > 0){
+      setData(data)
+    } else{
+      const falseData = [
+        {
+            id: 0,
+            produto: "Sem produtos cadastrados"
+        }
+      ]
+      setData(falseData)
+    }
   }
 
   useEffect(() => {
@@ -36,26 +48,49 @@ function Form() {
       setDateSale("")
 
     } catch (error) {
-      alert(`Erro ao cadastrar venda. Erro ${error}`)
+      Swal.fire({
+        position: "absolute",
+        icon: "error",
+        title: `Erro no sistema. Erro: ${error}`,
+        showConfirmButton: false,
+        timer: 2500
+      })
     }
   }
 
   //Salvar lista de vendas
   async function save() {
     try {
+      // cria a lista na nova tabela
       await api.post('/lista/salvar')
 
       //apaga a lista
       await api.delete('/lista/lista')
 
-      alert("Salvo com sucesso")
+      Swal.fire({
+        position: "absolute",
+        icon: "success",
+        title: "Venda Adicionada",
+        showConfirmButton: false,
+        timer: 2000,
+        // Ação ao fechar o alerta
+        willClose: () => {
+          window.location.reload()
+        }
+      })
     } catch (error) {
-      alert(`Erro ao cadastrar venda. Reveja os campos. Erro ${error}`)
+      Swal.fire({
+        position: "absolute",
+        icon: "error",
+        title: `Erro no sistema. Erro ${error}`,
+        showConfirmButton: false,
+        timer: 2500
+      })
     }
   }
 
   //Array para o input de autoComplete
-  const autoComplete = data.map((row) => (
+  const autoComplete = data?.map((row) => (
     {
       id: row,
       label: row.product_name

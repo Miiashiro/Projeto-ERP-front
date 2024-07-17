@@ -9,7 +9,7 @@ import Fornecedor from "./Pages/Supllier/supllier";
 import Sales from "./Pages/Sales/sales";
 import ModalAdd from "./Pages/Sales/PageAdd/pageAdd";
 import ProtectedRouter from "./protected";
-import Error from "./Pages/Start/pageError";
+import Error from "./pageError";
 
 function App() {
   return (

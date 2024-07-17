@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import api from "../../api"
 import LayoutComponent from "../../Components/LayoutStart/layoutComponent"
+const Swal = require('sweetalert2')
 
 function Registration(){
 
@@ -17,13 +18,21 @@ function Registration(){
 
             await api.post('/user/cadastro', data)
 
-            alert("Cadastro realizado")
+            Swal.fire({
+                position: "absolute",
+                icon: "success",
+                title: "Conta cadastrada"
+              })
 
             setName("")
             setEmail("")
             setPassword("")
         }catch(error){
-            alert(`Erro no cadastro. Veja as credenciais. Código erro: ${error}`)
+            Swal.fire({
+                position: "absolute",
+                icon: "error",
+                title: `Erro ao adicionar conta, reveja os campos!`
+              })
         }
     }
 

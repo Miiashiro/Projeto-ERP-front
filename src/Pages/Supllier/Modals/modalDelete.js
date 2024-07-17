@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { FaTrash } from 'react-icons/fa'
 import api from '../../../api'
 import mask from '../../../Components/Masks/mask'
+const Swal = require('sweetalert2')
 
 const ModalDelete = ({params}) => {
 
@@ -26,11 +27,33 @@ const ModalDelete = ({params}) => {
     try{
       await api.delete(`/fornecedor/${id}`, {headers: {'Authorization':`Bearer ${token}`}})
 
-      alert("Fornecedor deletado!")
-
-      window.location.reload()
+      Swal.fire({
+        position: "absolute",
+        icon: "success",
+        title: "Fornecedor Deletado",
+        showConfirmButton: false,
+        timer: 2000,
+        // Classe para usar no css 
+        customClass: {
+          popup: 'custom-swal'
+        },
+        // Ação ao fechar o alerta
+        willClose: () => {
+          window.location.reload()
+        }
+      })
     }catch(error){
-      alert(`Erro ao deletar fornecedor. Erro ${error}`)
+      Swal.fire({
+        position: "absolute",
+        icon: "error",
+        title: `Erro no sistema. Erro: ${error}`,
+        showConfirmButton: false,
+        timer: 2500,
+        customClass: {
+          // Classe para usar no css 
+          popup: 'custom-swal'
+        }
+      })
     }
   }
   
@@ -44,8 +67,7 @@ const ModalDelete = ({params}) => {
 
       <Modal open={open}
           onClose={toggle}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+          sx={{ zIndex: 1 }}
       >
         <Box sx={mask.style}>
           <h2>Deletar Fornecedor</h2>

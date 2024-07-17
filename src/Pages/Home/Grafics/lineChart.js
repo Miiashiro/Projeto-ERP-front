@@ -8,7 +8,18 @@ const LineCharts = () => {
 
   async function getData() {
     const { data } = await api.get('/lineChart')
-    setVenda(data)
+    if(data){
+      setVenda(data)
+    }else {
+      const falseData = [
+        {
+          id: 1,
+          price: 1,
+          name_bill: "Sem Dados"
+        }
+      ]
+      setVenda(falseData)
+    }
   }
 
   useEffect(() => {

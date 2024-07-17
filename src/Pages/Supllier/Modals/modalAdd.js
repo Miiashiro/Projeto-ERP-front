@@ -4,6 +4,7 @@ import api from '../../../api';
 import "./modal.css"
 import mask from '../../../Components/Masks/mask';
 import axios from 'axios';
+const Swal = require('sweetalert2')
 
 const ModalAdd = () => {
 
@@ -30,11 +31,33 @@ const ModalAdd = () => {
 
       await api.post('/fornecedor', data, {headers: {'Authorization':`Bearer ${token}`}})
 
-      alert("Fornecedor cadastrado")
-      window.location.reload()
-
+      Swal.fire({
+        position: "absolute",
+        icon: "success",
+        title: "Fornecedor Adicionado",
+        showConfirmButton: false,
+        timer: 2000,
+        // Classe para usar no css 
+        customClass: {
+          popup: 'custom-swal'
+        },
+        // Ação ao fechar o alerta
+        willClose: () => {
+          window.location.reload()
+        }
+      })
     } catch (error) {
-      alert(`Erro ao adicionar fornecedor. Erro ${error}`)
+      Swal.fire({
+        position: "absolute",
+        icon: "error",
+        title: `Erro ao adicionar fornecedor. Reveja os campos!`,
+        showConfirmButton: false,
+        timer: 2500,
+        customClass: {
+          // Classe para usar no css 
+          popup: 'custom-swal'
+        }
+      })
     }
   }
 
@@ -59,8 +82,7 @@ const ModalAdd = () => {
       <Modal
         open={open}
         onClose={toggle}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        sx={{ zIndex: 1 }}
       >
         <Box sx={mask.style}>
           <h2>Adicionar Fornecedor</h2>
