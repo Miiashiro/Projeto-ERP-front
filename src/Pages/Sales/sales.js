@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import LayoutComponent from "../../Components/LayoutComponentUsual/layoutComponent";
 import LayoutFilter from "../../Components/LayoutFilter/layoutFilter";
 import Table from "./Table/table";
+import "./sales.css"
+
 function Sale() {
 
     const [filter, setFilter] = useState("")

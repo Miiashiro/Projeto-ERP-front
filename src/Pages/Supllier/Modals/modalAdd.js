@@ -51,8 +51,6 @@ const ModalAdd = () => {
         position: "absolute",
         icon: "error",
         title: `Erro ao adicionar fornecedor. Reveja os campos!`,
-        showConfirmButton: false,
-        timer: 2500,
         customClass: {
           // Classe para usar no css 
           popup: 'custom-swal'

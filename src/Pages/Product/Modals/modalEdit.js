@@ -48,7 +48,7 @@ const EditModal = ({ params }) => {
         icon: "success",
         title: "Produto Alterado",
         showConfirmButton: false,
-        timer: 2000,
+        timer: 1800,
         // Classe para usar no css 
         customClass: {
           popup: 'custom-swal'
@@ -63,8 +63,6 @@ const EditModal = ({ params }) => {
         position: "absolute",
         icon: "error",
         title: `Erro ao alterar produto. Reveja os campos!`,
-        showConfirmButton: false,
-        timer: 2500,
         customClass: {
           // Classe para usar no css 
           popup: 'custom-swal'

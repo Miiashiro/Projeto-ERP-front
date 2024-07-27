@@ -21,8 +21,8 @@ export default function TableAddVenda() {
           const falseData = [
             {
               id_sale: 1,
-              product_name: "Adicione",
-              quantidade: "uma",    
+              product: "Adicione",
+              quant: "uma",    
               price: "venda",
               total: null
             }
@@ -36,6 +36,7 @@ export default function TableAddVenda() {
     getSale()
   }, [data])
   
+  // Deletar itens
   async function deleteSale(venda){
     try{
       const id = venda.id_sale
@@ -46,9 +47,7 @@ export default function TableAddVenda() {
       Swal.fire({
         position: "absolute",
         icon: "error",
-        title: `Erro no sistema. Erro ${error}`,
-        showConfirmButton: false,
-        timer: 2500
+        title: `Erro no sistema. Erro ${error}`
       })
     }
   }
@@ -78,10 +77,10 @@ export default function TableAddVenda() {
                   {venda.id_sale}
                 </TableCell>
                 <TableCell component="th">
-                  {venda.product_name}
+                  {venda.product}
                 </TableCell>
                 <TableCell component="th">
-                  {venda.quantidade}
+                  {venda.quant}
                 </TableCell>
                 <TableCell component="th">
                   {venda.price}

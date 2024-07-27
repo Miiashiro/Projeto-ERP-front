@@ -60,7 +60,7 @@ export default function Table({ filter }) {
         {
             id: row.id_sale,
             produto: row.product,
-            quant: row.quantidade,
+            quant: row.quant,
             preco: row.price,
             total: row.total,
             data: moment(row.date_sale).format("DD/MM/YYYY")

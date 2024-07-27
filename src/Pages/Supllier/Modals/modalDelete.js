@@ -47,8 +47,6 @@ const ModalDelete = ({params}) => {
         position: "absolute",
         icon: "error",
         title: `Erro no sistema. Erro: ${error}`,
-        showConfirmButton: false,
-        timer: 2500,
         customClass: {
           // Classe para usar no css 
           popup: 'custom-swal'

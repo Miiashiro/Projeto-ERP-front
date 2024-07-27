@@ -29,7 +29,7 @@ const ModalAdd = () => {
         icon: "success",
         title: "Conta Adicionada",
         showConfirmButton: false,
-        timer: 2000,
+        timer: 1800,
         // Classe para usar no css 
         customClass: {
           popup: 'custom-swal'
@@ -44,8 +44,6 @@ const ModalAdd = () => {
         position: "absolute",
         icon: "error",
         title: `Erro ao adicionar conta. Reveja os campos!`,
-        showConfirmButton: false,
-        timer: 2500,
         customClass: {
           // Classe para usar no css 
           popup: 'custom-swal'

@@ -69,8 +69,6 @@ const ModalEdit = ({ params }) => {
         position: "absolute",
         icon: "error",
         title: `Erro ao alterar fornecedor. Reveja os campos!`,
-        showConfirmButton: false,
-        timer: 2500,
         customClass: {
           // Classe para usar no css 
           popup: 'custom-swal'

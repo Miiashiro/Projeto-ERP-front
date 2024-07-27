@@ -8,13 +8,14 @@ const LineCharts = () => {
 
   async function getData() {
     const { data } = await api.get('/lineChart')
-    if(data){
+    
+    if(data.length > 0){
       setVenda(data)
     }else {
       const falseData = [
         {
           id: 1,
-          price: 1,
+          price: 0,
           name_bill: "Sem Dados"
         }
       ]

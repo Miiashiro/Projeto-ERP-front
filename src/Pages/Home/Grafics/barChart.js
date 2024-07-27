@@ -12,12 +12,12 @@ const BarCharts = () => {
   async function getData() {
     const { data } = await api.get('/barChart')
 
-    if (data.length > 0) {
+    if (data) {
       setData(data)
     } else {
       const falseData = [
         {
-          product: 0,
+          product: "sla",
           total: 0
         }
       ]

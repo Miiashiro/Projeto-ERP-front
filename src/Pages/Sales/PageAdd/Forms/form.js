@@ -51,9 +51,7 @@ function Form() {
       Swal.fire({
         position: "absolute",
         icon: "error",
-        title: `Erro no sistema. Erro: ${error}`,
-        showConfirmButton: false,
-        timer: 2500
+        title: `Erro no sistema. Erro: ${error}`
       })
     }
   }
@@ -70,21 +68,13 @@ function Form() {
       Swal.fire({
         position: "absolute",
         icon: "success",
-        title: "Venda Adicionada",
-        showConfirmButton: false,
-        timer: 2000,
-        // Ação ao fechar o alerta
-        willClose: () => {
-          window.location.reload()
-        }
+        title: "Venda Adicionada"
       })
     } catch (error) {
       Swal.fire({
         position: "absolute",
         icon: "error",
-        title: `Erro no sistema. Erro ${error}`,
-        showConfirmButton: false,
-        timer: 2500
+        title: `Erro no sistema. Erro ${error}`
       })
     }
   }
