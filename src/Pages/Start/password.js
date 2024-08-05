@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import LayoutComponent from "../../Components/LayoutStart/layoutComponent";
 import api from "../../api"
+const Swal = require('sweetalert2')
 
 function NewPassword(){
 
@@ -18,10 +19,19 @@ function NewPassword(){
             }
 
             const {data} = await api.post('/user/redefinir', dataPass)
-            alert(`Senha Alterada! Sua nova senha é: ${data.result[0].password}`)
+
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: `Nova senha: ${data.result[0].password}`
+              })
 
         }catch(error){
-            alert(`Erro ao gerar nova senha. Erro: ${error}`)
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: `Erro ao gerar senha`
+              })
         }
     }
 

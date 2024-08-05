@@ -15,6 +15,7 @@ export default function Table({ filter }) {
         const { data } = await api.get('/venda', {headers: {'Authorization':`Bearer ${token}`}})
 
         if (data.length <= 0) {
+            // Adiciona valores nulos se a consulta não retornar valores
             const falseData = [
                 {
                     id_sale: "",
@@ -35,6 +36,7 @@ export default function Table({ filter }) {
         getData()
     }, [])
 
+    //Colunas
     const columns = [
         { field: "id", headerName: "ID", width: 100 },
         { field: "produto", headerName: "Produto", width: 180 },
@@ -56,6 +58,7 @@ export default function Table({ filter }) {
         }
     ]
 
+    //Linhas
     const initialRows = data.map((row) => (
         {
             id: row.id_sale,
@@ -67,6 +70,7 @@ export default function Table({ filter }) {
         }
     ))
 
+    //Filtro
     const saleFiltrado = initialRows.filter((row) => {
         const lowerBusca = filter.toLowerCase()
         return row.produto?.toString().toLowerCase().includes(lowerBusca)

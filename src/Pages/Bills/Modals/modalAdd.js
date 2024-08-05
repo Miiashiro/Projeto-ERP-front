@@ -25,7 +25,7 @@ const ModalAdd = () => {
       await api.post('/conta', data, {headers: {'Authorization':`Bearer ${token}`}})
 
       Swal.fire({
-        position: "absolute",
+        position: "center",
         icon: "success",
         title: "Conta Adicionada",
         showConfirmButton: false,
@@ -41,7 +41,7 @@ const ModalAdd = () => {
       })
     }catch(error){
       Swal.fire({
-        position: "absolute",
+        position: "center",
         icon: "error",
         title: `Erro ao adicionar conta. Reveja os campos!`,
         customClass: {

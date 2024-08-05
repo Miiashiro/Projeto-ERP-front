@@ -8,17 +8,18 @@ import "../product.css"
 export default function Table({ filter }) {
 
     const [data, setData] = useState([])
+    const [ano, setAno] = useState(null)
 
     const token = sessionStorage.getItem('Token')
 
     //Método get
     async function getData() {
-        const { data } = await api.get('/produto', {headers: {'Authorization':`Bearer ${token}`}})
+        const { data } = await api.get('/produto', { headers: { 'Authorization': `Bearer ${token}` } })
 
         if (data.length > 0) {
             setData(data)
         } else {
-            //Adiciona valores nulos se o metodo não retornar valores
+            //Adiciona valores nulos se a consulta não retornar valores
             const falseData = [
                 {
                     id: "",

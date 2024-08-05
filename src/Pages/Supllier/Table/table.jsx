@@ -89,7 +89,8 @@ export default function Table({ filter }) {
                     ...initialRows.initialState,
                     pagination: { paginationModel: { pageSize: 5 } },
                 }}
-                pageSizeOptions={[5, 10, 25, 50]} />
+                pageSizeOptions={[5, 10, 25, 50]}
+                getRowHeight={() => 'auto'} />
         </div>
     )
 }

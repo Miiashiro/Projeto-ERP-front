@@ -44,7 +44,7 @@ const EditModal = ({ params }) => {
       await api.put('/produto', data, {headers: {'Authorization':`Bearer ${token}`}})
 
       Swal.fire({
-        position: "absolute",
+        position: "center",
         icon: "success",
         title: "Produto Alterado",
         showConfirmButton: false,
@@ -60,7 +60,7 @@ const EditModal = ({ params }) => {
       })
     } catch (error) {
       Swal.fire({
-        position: "absolute",
+        position: "center",
         icon: "error",
         title: `Erro ao alterar produto. Reveja os campos!`,
         customClass: {

@@ -28,7 +28,7 @@ const ModalAdd = () => {
       await api.post('/produto', data, { headers: { 'Authorization': `Bearer ${token}` } })
 
       Swal.fire({
-        position: "absolute",
+        position: "center",
         icon: "success",
         title: "Produto Adicionado",
         showConfirmButton: false,
@@ -44,7 +44,7 @@ const ModalAdd = () => {
       })
     } catch (error) {
       Swal.fire({
-        position: "absolute",
+        position: "center",
         icon: "error",
         title: `Erro ao adicionar produto. Reveja os campos!`,
         customClass: {

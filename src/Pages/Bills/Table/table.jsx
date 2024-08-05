@@ -16,7 +16,7 @@ export default function Table({ filter }) {
         if (data.length > 0) {
             setData(data)
         } else {
-            //Adiciona valores nulos se o metodo não retornar valores
+            //Adiciona valores nulos se a consulta não retornar valores
             const falseData = [
                 {
                     id: "",

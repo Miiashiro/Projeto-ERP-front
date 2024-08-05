@@ -1,6 +1,5 @@
 /*fundo da tela*/
 .container-prod{
-    /*background-color: rgb(119, 136, 153);*/
     background-color: rgb(238, 238, 238);
     width: 100%;
     min-height: 100vh;
@@ -16,7 +15,6 @@
     font-size: 50px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding-left: 10px;
-    /*color: #FFC15A;*/
     color: #000;
 }
 
@@ -30,6 +28,4 @@
 /*tamanho do quadro*/
 .wrap{
     width: 95%;
-    /*background-color: rgb(228, 228, 228);*/
-    
 }

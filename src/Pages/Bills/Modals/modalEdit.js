@@ -41,7 +41,7 @@ const ModalEdit = ({params}) => {
             await api.put('/conta', data, {headers: {'Authorization':`Bearer ${token}`}})
 
             Swal.fire({
-                position: "absolute",
+                position: "center",
                 icon: "success",
                 title: "Conta Alterada.",
                 showConfirmButton: false,
@@ -57,7 +57,7 @@ const ModalEdit = ({params}) => {
               })
         }catch(error){
             Swal.fire({
-                position: "absolute",
+                position: "center",
                 icon: "error",
                 title: `Erro ao alterar conta. Reveja os campos!`,
                 customClass: {
@@ -88,7 +88,7 @@ const ModalEdit = ({params}) => {
 
                         {/*Id e conta */}
                         <div className='wrap-input-group'>
-                            <TextField className='id' label="Id" disabled type="number"
+                            <TextField className='id' label="Id" disabled
                                 value={id} onChange={(e) => setId(e.target.value)} />
 
                             <TextField className='conta' label="Conta" type="text"

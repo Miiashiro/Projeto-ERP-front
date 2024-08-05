@@ -20,18 +20,17 @@ function Login() {
             const {data} = await api.post('/user/login', dataLogin)
 
             Swal.fire({
-                position: "absolute",
+                position: "center",
                 icon: "success",
                 title: "Login feito com sucesso!"
               })
 
-            //sessionStorage.setItem("Login", true)
             sessionStorage.setItem("Token", data.token)
             
             navigate("/Home")
         }catch(error){
             Swal.fire({
-                position: "absolute",
+                position: "center",
                 icon: "error",
                 title: `Senha ou email invalidos.`,
               })

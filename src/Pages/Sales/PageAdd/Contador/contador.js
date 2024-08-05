@@ -33,7 +33,7 @@ function Contador() {
         getSale()
     }, [data])
 
-    const teste = () => {
+    const somatorio = () => {
         var soma = 0
 
         for (let i = 0; i < data.length; i++) {
@@ -42,9 +42,10 @@ function Contador() {
 
         return soma
     }
+
     return (
         <div className="contador">
-            <span>Valor Total: R${teste()}</span>
+            <span>Valor Total: R${somatorio()}</span>
         </div>
     )
 }

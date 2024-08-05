@@ -54,7 +54,7 @@ const ModalEdit = ({ params }) => {
             await api.put('/venda', data, {headers: {'Authorization':`Bearer ${token}`}})
 
             Swal.fire({
-                position: "absolute",
+                position: "center",
                 icon: "success",
                 title: "Venda Alterada",
                 showConfirmButton: false,
@@ -70,7 +70,7 @@ const ModalEdit = ({ params }) => {
               })
         } catch (error) {
             Swal.fire({
-                position: "absolute",
+                position: "center",
                 icon: "error",
                 title: `Erro ao alterar venda. Reveja os campos!`,
                 customClass: {

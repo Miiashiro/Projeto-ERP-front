@@ -29,7 +29,7 @@ const DeleteModal = ({ params }) => {
             await api.delete(`/produto/${id}`, {headers: {'Authorization':`Bearer ${token}`}})
 
             Swal.fire({
-                position: "absolute",
+                position: "center",
                 icon: "success",
                 title: "Produto Deletado",
                 showConfirmButton: false,
@@ -45,7 +45,7 @@ const DeleteModal = ({ params }) => {
               })
         }catch(error){
             Swal.fire({
-                position: "absolute",
+                position: "center",
                 icon: "error",
                 title: `Erro no sistema. Erro ${error}`,
                 customClass: {

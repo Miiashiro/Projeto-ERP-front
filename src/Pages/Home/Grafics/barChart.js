@@ -17,7 +17,7 @@ const BarCharts = () => {
     } else {
       const falseData = [
         {
-          product: "sla",
+          product: "sem vendas",
           total: 0
         }
       ]
