@@ -1,6 +1,7 @@
 import { Box, Modal } from '@mui/material'
 import { GridActionsCellItem } from '@mui/x-data-grid'
 import React, { useState } from 'react'
+import './modal.css'
 import { FaTrash } from 'react-icons/fa'
 import api from '../../../api';
 import mask from '../../../Components/Masks/mask';

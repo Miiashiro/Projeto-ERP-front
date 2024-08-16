@@ -50,11 +50,11 @@ const ModalEdit = ({ params }) => {
       await api.put('/fornecedor', data, {headers: {'Authorization':`Bearer ${token}`}})
 
       Swal.fire({
-        position: "absolute",
+        position: "center",
         icon: "success",
         title: "Fornecedor Alterado",
         showConfirmButton: false,
-        timer: 2000,
+        timer: 1400,
         // Classe para usar no css 
         customClass: {
           popup: 'custom-swal'
@@ -66,7 +66,7 @@ const ModalEdit = ({ params }) => {
       })
     }catch(error){
       Swal.fire({
-        position: "absolute",
+        position: "center",
         icon: "error",
         title: `Erro ao alterar fornecedor. Reveja os campos!`,
         customClass: {

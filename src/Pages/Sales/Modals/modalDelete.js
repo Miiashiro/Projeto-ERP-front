@@ -31,7 +31,7 @@ const ModalDelete = ({ params }) => {
                 icon: "success",
                 title: "Venda Deletada",
                 showConfirmButton: false,
-                timer: 1800,
+                timer: 1400,
                 // Classe para usar no css 
                 customClass: {
                   popup: 'custom-swal'

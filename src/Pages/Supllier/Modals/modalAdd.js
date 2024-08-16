@@ -36,7 +36,7 @@ const ModalAdd = () => {
         icon: "success",
         title: "Fornecedor Adicionado",
         showConfirmButton: false,
-        timer: 2000,
+        timer: 1400,
         // Classe para usar no css 
         customClass: {
           popup: 'custom-swal'
@@ -48,7 +48,7 @@ const ModalAdd = () => {
       })
     } catch (error) {
       Swal.fire({
-        position: "absolute",
+        position: "center",
         icon: "error",
         title: `Erro ao adicionar fornecedor. Reveja os campos!`,
         customClass: {

@@ -45,7 +45,7 @@ export default function TableAddVenda() {
       
     }catch(error){
       Swal.fire({
-        position: "absolute",
+        position: "center",
         icon: "error",
         title: `Erro no sistema. Erro ${error}`
       })

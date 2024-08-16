@@ -1,6 +1,6 @@
 import { Box, Modal, TextField } from '@mui/material';
 import React, { useState } from 'react'
-import './modals.css'
+import './modal.css'
 import api from '../../../api';
 import mask from '../../../Components/Masks/mask';
 const Swal = require('sweetalert2')
@@ -29,7 +29,7 @@ const ModalAdd = () => {
         icon: "success",
         title: "Conta Adicionada",
         showConfirmButton: false,
-        timer: 1800,
+        timer: 1400,
         // Classe para usar no css 
         customClass: {
           popup: 'custom-swal'

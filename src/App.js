@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Bills from "./Pages/Bills/billsToPlay";
 import Home from "./Pages/Home/home";
-import NewPassword from "./Pages/Start/password";
 import Product from "./Pages/Product/product";
 import Login from "./Pages/Start/login";
 import Registration from "./Pages/Start/registration";
@@ -17,7 +16,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/Cadastro" element={<Registration/>} />
-        <Route path="/NovaSenha" element={<NewPassword />} />
 
         <Route path="" element={<ProtectedRouter />}>
           <Route path="/Home" element={<Home/>} />

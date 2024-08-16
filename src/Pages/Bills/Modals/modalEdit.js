@@ -1,6 +1,7 @@
 import { Box, Modal, TextField } from '@mui/material'
 import { GridActionsCellItem } from '@mui/x-data-grid'
 import React, { useState } from 'react'
+import './modal.css'
 import { FaEdit } from 'react-icons/fa'
 import api from '../../../api';
 import mask from '../../../Components/Masks/mask';
@@ -43,9 +44,9 @@ const ModalEdit = ({params}) => {
             Swal.fire({
                 position: "center",
                 icon: "success",
-                title: "Conta Alterada.",
+                title: "Conta Alterada",
                 showConfirmButton: false,
-                timer: 1800,
+                timer: 1400,
                 // Classe para usar no css 
                 customClass: {
                   popup: 'custom-swal'

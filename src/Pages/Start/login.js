@@ -64,9 +64,6 @@ function Login() {
                 </div>
             </form>
 
-
-            <p>Esqueceu a senha? <Link to="/NovaSenha">Clique aqui</Link></p>
-
             <p>Não tem uma conta? <Link to="/Cadastro">Clique aqui</Link></p>
 
         </LayoutComponent>

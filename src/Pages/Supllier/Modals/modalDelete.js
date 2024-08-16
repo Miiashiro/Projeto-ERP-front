@@ -28,11 +28,11 @@ const ModalDelete = ({params}) => {
       await api.delete(`/fornecedor/${id}`, {headers: {'Authorization':`Bearer ${token}`}})
 
       Swal.fire({
-        position: "absolute",
+        position: "center",
         icon: "success",
         title: "Fornecedor Deletado",
         showConfirmButton: false,
-        timer: 2000,
+        timer: 1400,
         // Classe para usar no css 
         customClass: {
           popup: 'custom-swal'
@@ -44,7 +44,7 @@ const ModalDelete = ({params}) => {
       })
     }catch(error){
       Swal.fire({
-        position: "absolute",
+        position: "center",
         icon: "error",
         title: `Erro no sistema. Erro: ${error}`,
         customClass: {
